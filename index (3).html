@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Код продажів — Ольга Венгерець</title>
+<meta name="description" content="Системні продажі послуг та товарів для менеджерів і підприємців. 2 місяці навчання, 44 лекції, прямі ефіри з Ольгою Венгерець.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Unbounded:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-elev: #141414;
+    --bg-card: #1a1a1a;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.16);
+    --text: #f5f5f0;
+    --text-dim: #a8a8a3;
+    --text-mute: #707070;
+    --orange: #ff7a1a;
+    --orange-bright: #ff8c33;
+    --orange-deep: #e85d00;
+    --yellow: #ffc857;
+    --tg-bubble: #1c2733;
+    --tg-bubble-2: #182028;
+    --display: 'Unbounded', 'Manrope', sans-serif;
+    --body: 'Manrope', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px);
+    background: rgba(10,10,10,0.7);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+  .logo {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-dot {
+    width: 10px; height: 10px;
+    background: var(--orange);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--orange);
+  }
+  .nav-cta, .cta-btn {
+    background: var(--orange);
+    color: #000;
+    padding: 12px 22px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--orange);
+    font-family: var(--body);
+    cursor: pointer;
+    display: inline-block;
+  }
+  .nav-cta:hover, .cta-btn:hover {
+    background: var(--orange-bright);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 30px rgba(255,122,26,0.4);
+  }
+
+  /* HERO */
+  .hero {
+    padding: 100px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,122,26,0.15), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -300px;
+    left: -200px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255,200,87,0.08), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+    gap: 48px;
+    align-items: center;
+  }
+  .hero-content {
+    min-width: 0;
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2.6rem, 7vw, 5.8rem);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    margin-bottom: 32px;
+    max-width: 1100px;
+  }
+  h1 .accent {
+    color: var(--orange);
+    font-style: italic;
+    font-weight: 600;
+  }
+  .hero-kicker {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.35rem, 3vw, 2.35rem);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    max-width: 860px;
+    margin-bottom: 18px;
+  }
+  .hero-sub {
+    font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+    color: var(--text-dim);
+    max-width: 720px;
+    margin-bottom: 48px;
+    line-height: 1.55;
+  }
+  .hero-cta-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--orange);
+    color: #000;
+    padding: 22px 38px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--orange);
+    position: relative;
+    overflow: hidden;
+    font-family: var(--body);
+    cursor: pointer;
+  }
+  .btn-primary::after {
+    content: '→';
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+  .btn-primary:hover {
+    background: var(--orange-bright);
+    box-shadow: 0 15px 40px rgba(255,122,26,0.5);
+    transform: translateY(-2px);
+  }
+  .btn-primary:hover::after { transform: translateX(4px); }
+
+  .payment-proof {
+    position: relative;
+    min-height: 520px;
+  }
+  .payment-proof::before {
+    content: '';
+    position: absolute;
+    inset: 60px 20px 40px;
+    background: radial-gradient(circle, rgba(255,122,26,0.22), transparent 68%);
+    filter: blur(10px);
+    pointer-events: none;
+  }
+  .payment-card {
+    position: absolute;
+    width: min(100%, 330px);
+    background: rgba(245,245,240,0.96);
+    color: #090909;
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 22px 55px rgba(0,0,0,0.46);
+    transform: rotate(var(--rotate));
+  }
+  .payment-card:nth-child(1) { top: 0; right: 22px; --rotate: 4deg; z-index: 4; }
+  .payment-card:nth-child(2) { top: 88px; left: 0; --rotate: -5deg; z-index: 3; }
+  .payment-card:nth-child(3) { top: 190px; right: 0; --rotate: 3deg; z-index: 5; }
+  .payment-card:nth-child(4) { top: 304px; left: 34px; --rotate: -3deg; z-index: 2; }
+  .payment-card:nth-child(5) { top: 392px; right: 54px; --rotate: 5deg; z-index: 1; }
+  .payment-card:nth-child(6) { top: 442px; left: 4px; --rotate: -4deg; z-index: 0; opacity: 0.92; }
+  .payment-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    color: rgba(0,0,0,0.48);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+  .payment-name {
+    display: inline-block;
+    max-width: 170px;
+    filter: blur(4px);
+    user-select: none;
+  }
+  .payment-amount {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(1.6rem, 3.2vw, 2.55rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+  .payment-note {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 100px;
+    background: rgba(255,122,26,0.14);
+    color: #381500;
+    padding: 8px 12px;
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+
+  /* SECTION BASE */
+  section {
+    padding: 100px 0;
+    position: relative;
+  }
+  .section-label {
+    display: inline-block;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 24px;
+    padding-left: 32px;
+    position: relative;
+  }
+  .section-label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 1px;
+    background: var(--orange);
+  }
+  h2 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2rem, 4.5vw, 3.8rem);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 56px;
+    max-width: 900px;
+  }
+  h2 .accent { color: var(--orange); font-style: italic; font-weight: 600; }
+
+  /* BONUS */
+  .bonus {
+    background: linear-gradient(180deg, var(--bg) 0%, #0d0d0d 100%);
+  }
+  .bonus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .bonus-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 36px 32px;
+    position: relative;
+    transition: all 0.3s ease;
+    min-height: 240px;
+  }
+  .bonus-card:hover {
+    border-color: var(--orange);
+    transform: translateY(-4px);
+  }
+  .bonus-num {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 3rem;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,122,26,0.4);
+    line-height: 1;
+  }
+  .bonus-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, var(--orange), var(--orange-deep));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    font-size: 1.8rem;
+    color: #000;
+    font-weight: 800;
+  }
+  .bonus-card h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+    letter-spacing: -0.015em;
+    line-height: 1.35;
+  }
+
+  /* FORMAT */
+  .format {
+    background: linear-gradient(180deg, #0d0d0d 0%, var(--bg) 100%);
+  }
+  .format-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 900px;
+  }
+  .format-item {
+    display: flex;
+    gap: 20px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .format-item:last-child { border-bottom: none; }
+  .format-num {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--orange);
+    letter-spacing: 0.1em;
+    min-width: 36px;
+    padding-top: 4px;
+  }
+  .format-content h4 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .format-content p {
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* PROGRAM */
+  .program-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+  }
+  .module {
+    background: var(--bg-elev);
+    padding: 28px 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    transition: background 0.3s ease;
+  }
+  .module:hover { background: var(--bg-card); }
+  .module-num {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--orange);
+    min-width: 170px;
+    letter-spacing: -0.02em;
+    padding-top: 2px;
+  }
+  .module-body {
+    flex: 1;
+  }
+  .module-title {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: -0.015em;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .module-desc {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  /* SPEAKER */
+  .speaker {
+    background: linear-gradient(180deg, var(--bg) 0%, #0d0d0d 100%);
+    overflow: hidden;
+  }
+  .speaker-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .speaker-visual {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #111;
+    border: 1px solid var(--border-strong);
+  }
+  .speaker-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.02) 35%, rgba(0,0,0,0.58) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .speaker-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 38%;
+    display: block;
+  }
+  .speaker-badge {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-strong);
+    border-radius: 16px;
+    padding: 20px;
+    z-index: 2;
+  }
+  .speaker-badge-name {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+  .speaker-badge-role {
+    color: var(--orange);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .speaker-content h2 { margin-bottom: 32px; }
+  .speaker-bio {
+    font-size: 1.1rem;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 32px;
+  }
+  .speaker-bio p { margin-bottom: 18px; }
+  .speaker-bio strong { color: var(--orange); }
+  .companies { margin-top: 40px; }
+  .companies-label {
+    font-size: 0.78rem;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .companies-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .company-tag {
+    padding: 10px 18px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .company-tag.highlight {
+    background: rgba(255,122,26,0.1);
+    border-color: var(--orange);
+    color: var(--orange);
+  }
+
+  /* APPLY */
+  .apply {
+    background:
+      radial-gradient(circle at 80% 20%, rgba(255,122,26,0.15), transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(255,200,87,0.1), transparent 50%),
+      #0d0d0d;
+    position: relative;
+    text-align: center;
+  }
+  .apply-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .apply-content h2 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 28px;
+  }
+  .apply-content > p {
+    color: var(--text-dim);
+    font-size: 1.15rem;
+    line-height: 1.65;
+    margin-bottom: 48px;
+  }
+  .apply-content > p strong { color: var(--orange); }
+  .apply .btn-primary {
+    font-size: 1.15rem;
+    padding: 24px 44px;
+  }
+
+  /* REVIEWS - Telegram chat style, masonry */
+  .reviews {
+    background:
+      radial-gradient(circle at 20% 30%, rgba(28,39,51,0.4), transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(28,39,51,0.3), transparent 50%),
+      var(--bg);
+    padding: 120px 0;
+    overflow: hidden;
+  }
+  .reviews-header {
+    text-align: left;
+    margin-bottom: 56px;
+  }
+  .reviews-header h2 { margin-bottom: 18px; }
+  .reviews-lead {
+    color: var(--text-dim);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 700px;
+  }
+  /* Masonry-style with CSS columns - bubbles flow naturally */
+  .reviews-masonry {
+    column-count: 3;
+    column-gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .tg-bubble {
+    background: var(--tg-bubble);
+    border-radius: 18px;
+    padding: 16px 18px 28px;
+    color: #e9eef5;
+    font-size: 0.97rem;
+    line-height: 1.5;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+    overflow-wrap: break-word;
+  }
+  .tg-bubble:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+  }
+  .tg-bubble.dark { background: var(--tg-bubble-2); }
+  .tg-bubble .tg-time {
+    position: absolute;
+    bottom: 8px;
+    right: 14px;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* FLOATING CTA */
+  .floating-cta {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    z-index: 90;
+    background: var(--orange);
+    color: #000;
+    padding: 18px 36px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: var(--body);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 15px 40px rgba(255,122,26,0.5), 0 0 0 1px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+  }
+  .floating-cta::after {
+    content: '→';
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+  .floating-cta.visible {
+    transform: translateX(-50%) translateY(0);
+  }
+  .floating-cta:hover {
+    background: var(--orange-bright);
+    box-shadow: 0 20px 50px rgba(255,122,26,0.7);
+  }
+  .floating-cta:hover::after { transform: translateX(4px); }
+
+  /* LEAD POPUP */
+  .lead-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: rgba(0,0,0,0.68);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.24s ease;
+  }
+  .lead-modal.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .lead-dialog {
+    width: min(100%, 520px);
+    background:
+      radial-gradient(circle at 85% 0%, rgba(255,122,26,0.18), transparent 40%),
+      var(--bg-elev);
+    border: 1px solid rgba(255,122,26,0.5);
+    border-radius: 24px;
+    padding: 34px;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 24px 80px rgba(255,122,26,0.2), 0 28px 90px rgba(0,0,0,0.7);
+    position: relative;
+    transform: scale(0.94) translateY(12px);
+    transition: transform 0.24s ease;
+  }
+  .lead-modal.open .lead-dialog {
+    transform: scale(1) translateY(0);
+  }
+  .lead-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    background: rgba(255,255,255,0.04);
+    color: var(--text);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .lead-dialog h3 {
+    font-family: var(--display);
+    font-size: clamp(1.45rem, 4vw, 2.1rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    max-width: 410px;
+    margin-bottom: 14px;
+  }
+  .lead-dialog p {
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 26px;
+    max-width: 420px;
+  }
+  .lead-form {
+    display: grid;
+    gap: 14px;
+  }
+  .lead-field {
+    display: grid;
+    gap: 8px;
+  }
+  .lead-field label {
+    color: var(--text-dim);
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+  .lead-field input {
+    width: 100%;
+    border: 1px solid var(--border-strong);
+    background: rgba(0,0,0,0.35);
+    color: var(--text);
+    border-radius: 16px;
+    padding: 16px 18px;
+    font: inherit;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .lead-field input:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 4px rgba(255,122,26,0.14);
+  }
+  .lead-error {
+    display: none;
+    color: var(--orange-bright);
+    font-size: 0.9rem;
+  }
+  .lead-error.visible {
+    display: block;
+  }
+  .lead-submit {
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #050505;
+    padding: 60px 0 40px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 48px;
+  }
+  .footer-about p {
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-top: 16px;
+    font-size: 0.92rem;
+    max-width: 400px;
+  }
+  .footer-col h4 {
+    font-family: var(--display);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--orange);
+    margin-bottom: 18px;
+    font-weight: 700;
+  }
+  .footer-col a {
+    display: block;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 6px 0;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+  .footer-col a:hover { color: var(--orange); }
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-mute);
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    section { padding: 70px 0; }
+    .hero { padding: 60px 0 50px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+    .payment-proof { min-height: 440px; max-width: 560px; }
+    .payment-card { width: min(100%, 300px); }
+    .payment-card:nth-child(1) { right: 18px; }
+    .payment-card:nth-child(2) { left: 0; }
+    .payment-card:nth-child(3) { right: 8px; top: 172px; }
+    .payment-card:nth-child(4) { left: 22px; top: 274px; }
+    .payment-card:nth-child(5) { display: none; }
+    .payment-card:nth-child(6) { display: none; }
+    .container { padding: 0 20px; }
+    .bonus-grid { grid-template-columns: 1fr; }
+    .speaker-grid { grid-template-columns: 1fr; gap: 40px; }
+    .speaker-visual { max-width: 520px; width: 100%; margin: 0 auto; }
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .module { padding: 22px 20px; gap: 16px; }
+    .module-num { font-size: 1.05rem; min-width: 138px; }
+    .module-title { font-size: 1rem; }
+    .speaker-grid { gap: 40px; }
+    .reviews-masonry { column-count: 2; }
+    .reviews-header { margin-bottom: 42px; }
+    .floating-cta { padding: 14px 24px; font-size: 0.9rem; bottom: 16px; }
+  }
+  @media (max-width: 700px) {
+    .program-list { border-radius: 18px; }
+    .module { flex-direction: column; gap: 12px; padding: 22px 18px; }
+    .module-num {
+      min-width: auto;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border: 1px solid rgba(255,122,26,0.35);
+      border-radius: 100px;
+      align-self: flex-start;
+    }
+    .module-title { font-size: 1.05rem; line-height: 1.35; }
+    .module-desc { font-size: 0.92rem; }
+    .reviews { padding: 64px 0 96px; }
+    .reviews-header { margin-bottom: 30px; }
+    .reviews-masonry { column-count: 1; }
+    .tg-bubble { padding: 15px 16px 30px; margin-bottom: 14px; font-size: 0.93rem; border-radius: 16px; }
+    .tg-bubble:hover { transform: none; }
+    .floating-cta { max-width: calc(100vw - 32px); width: max-content; padding: 13px 18px; font-size: 0.84rem; }
+  }
+  @media (max-width: 560px) {
+    nav .container { gap: 14px; align-items: flex-start; }
+    .logo { font-size: 0.92rem; padding-top: 8px; }
+    .nav-cta { padding: 10px 14px; font-size: 0.78rem; text-align: center; }
+    .container { padding: 0 16px; }
+    section { padding: 58px 0; }
+    .hero { padding: 46px 0 44px; }
+    h1 { font-size: 2.4rem; }
+    h2 { margin-bottom: 34px; }
+    .hero-kicker { font-size: 1.36rem; }
+    .hero-sub { margin-bottom: 34px; }
+    .payment-proof { min-height: 390px; margin-top: 4px; }
+    .payment-card { width: min(100%, 270px); padding: 16px; border-radius: 20px; }
+    .payment-card:nth-child(1) { top: 0; right: 0; }
+    .payment-card:nth-child(2) { top: 82px; left: 0; }
+    .payment-card:nth-child(3) { top: 168px; right: 0; }
+    .payment-card:nth-child(4) { top: 260px; left: 8px; }
+    .payment-amount { font-size: 1.5rem; }
+    .payment-note { font-size: 0.78rem; }
+    .btn-primary { width: 100%; justify-content: center; padding: 18px 22px; font-size: 0.98rem; }
+    .bonus-card { min-height: 0; padding: 30px 24px; border-radius: 18px; }
+    .format-item { gap: 14px; padding: 22px 0; }
+    .speaker-visual { aspect-ratio: 3/4; border-radius: 18px; }
+    .speaker-badge { left: 16px; right: 16px; bottom: 16px; padding: 16px; }
+    .speaker-badge-name { font-size: 1.05rem; }
+    .lead-modal { padding: 14px; }
+    .lead-dialog { padding: 28px 20px 22px; border-radius: 22px; }
+    .lead-close { top: 12px; right: 12px; }
+    .footer-bottom { align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="logo">
+      <span class="logo-dot"></span>
+      <span>VENHER · EDU</span>
+    </div>
+    <button class="nav-cta" data-lead-trigger>Анкета попереднього запису</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <h1>Код <span class="accent">продажів</span></h1>
+        <div class="hero-kicker">Навчіться якісно продавати клієнтам та заробляти більше</div>
+        <p class="hero-sub">Системні продажі послуг та товарів для менеджерів і підприємців</p>
+        <div class="hero-cta-row">
+          <button class="btn-primary" data-lead-trigger>Анкета попереднього запису</button>
+        </div>
+      </div>
+
+      <div class="payment-proof" aria-label="Приклади оплат після системної роботи з продажами">
+        <div class="payment-card">
+          <div class="payment-top"><span>Від: <span class="payment-name">Марина Савчук</span></span><span>сьогодні</span></div>
+          <div class="payment-amount">670 грн</div>
+          <div class="payment-note">оплата за товар</div>
+        </div>
+        <div class="payment-card">
+          <div class="payment-top"><span>Від: <span class="payment-name">Олена Романюк</span></span><span>12:48</span></div>
+          <div class="payment-amount">1 800 грн</div>
+          <div class="payment-note">оплата за товар</div>
+        </div>
+        <div class="payment-card">
+          <div class="payment-top"><span>Від: <span class="payment-name">Ірина Коваль</span></span><span>14:05</span></div>
+          <div class="payment-amount">8 599 грн</div>
+          <div class="payment-note">оплата за товар</div>
+        </div>
+        <div class="payment-card">
+          <div class="payment-top"><span>Від: <span class="payment-name">Анна Мельник</span></span><span>16:22</span></div>
+          <div class="payment-amount">22 600 грн</div>
+          <div class="payment-note">оплата за послуги</div>
+        </div>
+        <div class="payment-card">
+          <div class="payment-top"><span>Від: <span class="payment-name">Катерина Бойко</span></span><span>18:10</span></div>
+          <div class="payment-amount">379 грн</div>
+          <div class="payment-note">оплата за товар</div>
+        </div>
+        <div class="payment-card">
+          <div class="payment-top"><span>Від: <span class="payment-name">Наталія Шевченко</span></span><span>19:31</span></div>
+          <div class="payment-amount">850 грн</div>
+          <div class="payment-note">оплата за послуги косметології</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AFTER FORM -->
+<section class="bonus">
+  <div class="container">
+    <div class="section-label">Після заповнення анкети</div>
+    <h2>Вам стають доступні <span class="accent">наступні можливості</span></h2>
+
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <div class="bonus-num">01</div>
+        <div class="bonus-icon">%</div>
+        <h3>За вами фіксується найкраща ціна та бонусні уроки</h3>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-num">02</div>
+        <div class="bonus-icon">▶</div>
+        <h3>Група Telegram з 3 бонусними лекціями про продажі</h3>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-num">03</div>
+        <div class="bonus-icon">✦</div>
+        <h3>Персональна консультація в Telegram</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMAT -->
+<section class="format">
+  <div class="container">
+    <div class="section-label">Формат</div>
+    <h2>2 місяці <span class="accent">навчання</span></h2>
+
+    <div class="format-list">
+      <div class="format-item">
+        <div class="format-num">01</div>
+        <div class="format-content">
+          <h4>44 лекції</h4>
+          <p>Прокачаємо усі етапи та ваші навички продажів.</p>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-num">02</div>
+        <div class="format-content">
+          <h4>Регулярні зустрічі з Ольгою Венгерець</h4>
+          <p>— засновницею курсу.</p>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-num">03</div>
+        <div class="format-content">
+          <h4>Запитання в чаті</h4>
+          <p>Ви можете ставити запитання в чаті увесь час протягом проходження занять.</p>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-num">04</div>
+        <div class="format-content">
+          <h4>Доступ до записів — 3 місяці</h4>
+          <p>Запис до усіх уроків зберігається на 3 місяці.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program">
+  <div class="container">
+    <div class="section-label">Наповнення курсу</div>
+    <h2>8 <span class="accent">модулів</span></h2>
+
+    <div class="program-list">
+      <div class="module">
+        <span class="module-num">Модуль 1 (2 уроки)</span>
+        <div class="module-body">
+          <span class="module-title">Організаційний старт та наші цілі</span>
+          <div class="module-desc">Поставимо реальні фінансові цілі і ви зрозумієте, як проходити навчання так, щоб одразу впроваджувати інструменти у свої продажі.</div>
+        </div>
+      </div>
+      <div class="module">
+        <span class="module-num">Модуль 2 (4 уроки)</span>
+        <div class="module-body">
+          <span class="module-title">Ваша психологічна готовність продавати</span>
+          <div class="module-desc">Приберете страх нав'язуватися, навчитеся спокійно називати ціну, чути «ні» без просідання і продавати з позиції цінності.</div>
+        </div>
+      </div>
+      <div class="module">
+        <span class="module-num">Модуль 3 (9 уроків)</span>
+        <div class="module-body">
+          <span class="module-title">Стратегії, техніки, інструменти продажів</span>
+          <div class="module-desc">20+ технік для діалогу з клієнтом: як презентувати продукт, показувати вигоду, відповідати на «дорого» і доводити розмову до оплати.</div>
+        </div>
+      </div>
+      <div class="module">
+        <span class="module-num">Модуль 4 (8 уроків)</span>
+        <div class="module-body">
+          <span class="module-title">Продажі в переписці</span>
+          <div class="module-desc">Розберемо всі етапи, питання та інструменти продажів у діректі та месенджерах.</div>
+        </div>
+      </div>
+      <div class="module">
+        <span class="module-num">Модуль 5 (8 уроків)</span>
+        <div class="module-body">
+          <span class="module-title">Продажі через дзвінки та онлайн зустрічі</span>
+          <div class="module-desc">Навчитеся вести дзвінок від А до Я: виявляти потребу, ставити сильні питання, презентувати рішення та закривати продаж в кінці розмови.</div>
+        </div>
+      </div>
+      <div class="module">
+        <span class="module-num">Модуль 6 (6 уроків)</span>
+        <div class="module-body">
+          <span class="module-title">Додаткові фішки комунікації</span>
+          <div class="module-desc">Як і коли використовувати голосові повідомлення, соціальні докази, створювати ажіотаж та працювати зі складними клієнтами.</div>
+        </div>
+      </div>
+      <div class="module">
+        <span class="module-num">Модуль 7 (3 уроки)</span>
+        <div class="module-body">
+          <span class="module-title">Фолоу-апи</span>
+          <div class="module-desc">Зрозумієте всі інструменти, як і коли повертатись до клієнтів в діалог та як не втрачати теплих людей після першого контакту.</div>
+        </div>
+      </div>
+      <div class="module">
+        <span class="module-num">Модуль 8 (4 уроки)</span>
+        <div class="module-body">
+          <span class="module-title">Сервіс та LTV</span>
+          <div class="module-desc">Побудуєте сервіс, після якого клієнти повертаються, радять вас іншим і купують повторно: відгуки, рекомендації, реферальні механіки та довгострокова цінність.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKER -->
+<section class="speaker">
+  <div class="container">
+    <div class="speaker-grid">
+      <div class="speaker-visual">
+        <img class="speaker-photo" src="IMG_4676.JPG" alt="Ольга Венгерець">
+        <div class="speaker-badge">
+          <div class="speaker-badge-name">Ольга Венгерець</div>
+          <div class="speaker-badge-role">Засновниця курсу</div>
+        </div>
+      </div>
+
+      <div class="speaker-content">
+        <div class="section-label">Про спікера</div>
+        <h2>Ольга <span class="accent">Венгерець</span></h2>
+
+        <div class="speaker-bio">
+          <p>Експертка з продажів і маркетингу з <strong>реальним 10-річним досвідом</strong> роботи на ринках України та США.</p>
+          <p>Менторка в Дія.Бізнес. Засновниця курсу «Код продажів».</p>
+        </div>
+
+        <div class="companies">
+          <div class="companies-label">Досвід у компаніях</div>
+          <div class="companies-list">
+            <span class="company-tag highlight">Netpeak</span>
+            <span class="company-tag highlight">BetterMe</span>
+            <span class="company-tag highlight">MacKeeper</span>
+            <span class="company-tag highlight">Hacken Cybersecurity</span>
+            <span class="company-tag">Дія.Бізнес · менторка</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY - CTA only -->
+<section id="apply" class="apply">
+  <div class="container">
+    <div class="apply-content">
+      <div class="section-label">Анкета</div>
+      <h2>Доєднатися до <span class="accent">потоку</span></h2>
+      <p><strong>Важливо:</strong> Ольга зв'яжеться з вами в Telegram протягом 24 годин після заповнення анкети.</p>
+      <button class="btn-primary" data-lead-trigger>Заповнити анкету</button>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS - after form -->
+<section class="reviews">
+  <div class="container">
+    <div class="reviews-header">
+      <div class="section-label">Відгуки</div>
+      <h2>Кейси після <span class="accent">роботи з продажами</span></h2>
+      <p class="reviews-lead">Реальні повідомлення від клієнтів та учениць: більше впевненості, чіткіший план дій і продажі, які починають відбуватися системно.</p>
+    </div>
+
+    <div class="reviews-masonry">
+      <div class="tg-bubble">
+        Хотела сказать лично, но напишу, я продала обучение, на червень уже 2 забронировано, плюс пишутся на загар и депиляцию. Ближе к сути, с первого запуска по 6 злотых в день, я уже отбила твоё обучение 🥰😄
+        <span class="tg-time">13:08</span>
+      </div>
+
+      <div class="tg-bubble dark">
+        ДКую тобі що сьогодні підсвітила мені та пояснила, це прям супер цінна інфа. Думаю для усіх 😘
+        <span class="tg-time">21:15</span>
+      </div>
+
+      <div class="tg-bubble">
+        Клієнт погодився<br><br>
+        Не знаю шо відповів, але погодився
+        <span class="tg-time">15:47</span>
+      </div>
+
+      <div class="tg-bubble dark">
+        Це набагато-набагато краще ніж попередня реклама)) враховуючи те, що зроблена вона за вечір — це дуже добре 🤝<br>
+        Дякую щиро тобі ще і ще 🙏<br>
+        Далі працюємо з сенсами і креативами) наступний МК 15го, теж будемо запускати рекламу 👌
+        <span class="tg-time">15:32</span>
+      </div>
+
+      <div class="tg-bubble">
+        дякую безмежне! Ви — супер крута!<br>
+        це прям туди-туди, дуже відгукнулось за цінностями 🤗<br><br>
+        дякуююю, Ви просто прекраснаааа<br>
+        обіймаюююююю 🤍
+        <span class="tg-time">13:07</span>
+      </div>
+
+      <div class="tg-bubble dark">
+        Зараз прям саме вчасно — вчасно!!!!<br>
+        Прям для людей тривожників яким треба чіткий план дій<br>
+        Ви супер!!!!!!<br><br>
+        Все, занотувала!<br>
+        Дякую безмежне!!!!! 🥰<br>
+        До зустрічііі<br><br>
+        Світлого та безпечного дня 🙏
+      </div>
+
+      <div class="tg-bubble">
+        І були продажі, вчора 3 відправили завтра 2 будуть їхати.
+        <span class="tg-time">22:24</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <div class="logo">
+          <span class="logo-dot"></span>
+          <span>VENHER · EDU</span>
+        </div>
+        <p>Курс «Код продажів» — системні продажі послуг та товарів для менеджерів і підприємців.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Сторінки</h4>
+        <a href="#program">Програма</a>
+        <a href="#apply">Анкета</a>
+      </div>
+      <div class="footer-col">
+        <h4>Документи</h4>
+        <a href="https://venher-edu.com.ua/politika" target="_blank">Політика конфіденційності</a>
+        <a href="https://venher-edu.com.ua/oferta" target="_blank">Публічна оферта</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ФОП Венгерець Ольга Юріївна</span>
+      <span>venher-edu.com.ua</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING CTA -->
+<button class="floating-cta" id="floatingCta" data-lead-trigger>Анкета попереднього запису</button>
+
+<!-- LEAD POPUP -->
+<div class="lead-modal" id="leadModal" aria-hidden="true">
+  <div class="lead-dialog" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
+    <button class="lead-close" type="button" id="leadClose" aria-label="Закрити">×</button>
+    <h3 id="leadTitle">Попередній запис на курс “Код продажів”</h3>
+    <p>Залиште телефон і Telegram, щоб забронювати місце та отримати деталі навчання.</p>
+    <form class="lead-form" id="leadForm">
+      <div class="lead-field">
+        <label for="leadPhone">Телефон</label>
+        <input id="leadPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+      </div>
+      <div class="lead-field">
+        <label for="leadTelegram">Telegram</label>
+        <input id="leadTelegram" name="telegram" type="text" autocomplete="username" placeholder="@username або номер" required>
+      </div>
+      <div class="lead-error" id="leadError">Заповніть телефон і Telegram.</div>
+      <button class="btn-primary lead-submit" type="submit">Забронювати місце</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Floating CTA: show after scrolling past hero
+  const floatingCta = document.getElementById('floatingCta');
+  const hero = document.querySelector('.hero');
+  const apply = document.getElementById('apply');
+
+  function toggleFloatingCta() {
+    if (!hero || !apply) return;
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    const applyTop = apply.getBoundingClientRect().top;
+    const applyBottom = apply.getBoundingClientRect().bottom;
+    const inApply = applyTop < window.innerHeight && applyBottom > 0;
+    // Show when hero scrolled past, hide when over the apply section CTA area
+    if (heroBottom < 0 && !inApply) {
+      floatingCta.classList.add('visible');
+    } else {
+      floatingCta.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', toggleFloatingCta, { passive: true });
+  window.addEventListener('resize', toggleFloatingCta);
+  toggleFloatingCta();
+
+  const leadModal = document.getElementById('leadModal');
+  const leadForm = document.getElementById('leadForm');
+  const leadClose = document.getElementById('leadClose');
+  const leadError = document.getElementById('leadError');
+  const leadRedirectUrl = 'https://t.me/Olga_Venher_bot?start=ZGw6MzI5NDYx';
+
+  function openLeadModal() {
+    leadModal.classList.add('open');
+    leadModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    window.setTimeout(function() {
+      document.getElementById('leadPhone').focus();
+    }, 80);
+  }
+
+  function closeLeadModal() {
+    leadModal.classList.remove('open');
+    leadModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    leadError.classList.remove('visible');
+  }
+
+  document.addEventListener('click', function(e) {
+    const trigger = e.target.closest('[data-lead-trigger]');
+    if (!trigger) return;
+    e.preventDefault();
+    openLeadModal();
+  });
+
+  leadClose.addEventListener('click', closeLeadModal);
+  leadModal.addEventListener('click', function(e) {
+    if (e.target === leadModal) closeLeadModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && leadModal.classList.contains('open')) closeLeadModal();
+  });
+
+  leadForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const formData = new FormData(leadForm);
+    const phone = String(formData.get('phone') || '').trim();
+    const telegram = String(formData.get('telegram') || '').trim();
+
+    if (!phone || !telegram) {
+      leadError.classList.add('visible');
+      return;
+    }
+
+    leadError.classList.remove('visible');
+
+    try {
+      console.log('Lead submit started:', { phone, telegram });
+      const response = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone, telegram })
+      });
+
+      const responseText = await response.text();
+      let payload = null;
+      try {
+        payload = responseText ? JSON.parse(responseText) : null;
+      } catch (parseError) {
+        console.error('Telegram lead endpoint returned non-JSON response:', responseText);
+      }
+
+      if (!response.ok) {
+        console.error('Telegram lead endpoint error:', payload || responseText);
+      } else if (!payload || payload.ok !== true) {
+        console.error('Telegram lead endpoint unexpected response:', payload || responseText);
+      } else {
+        console.log('Lead sent to Telegram:', payload);
+      }
+    } catch (error) {
+      console.error('Telegram lead endpoint error:', error);
+    } finally {
+      window.location.href = leadRedirectUrl;
+    }
+  });
+</script>
+
+</body>
+</html>
