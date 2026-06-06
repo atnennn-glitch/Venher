@@ -175,9 +175,9 @@
       <div class="lead-modal__kicker">Прямий ефір</div>
       <h2 id="lead-modal-title">Залиште заявку на ефір</h2>
       <p class="lead-modal__subtitle">Після заповнення заявки обов’язково долучіться в Telegram-бот ефіру — там буде доступ до матеріалів, нагадування та бонус.</p>
-      <form class="lead-form" id="lead-form" autocomplete="on">
-        <div class="lead-field"><label for="email">Email</label><input id="email" type="email" name="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" placeholder="your@email.com" required></div>
-        <div class="lead-field"><label for="phone">Телефон</label><input id="phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+380..." required></div>
+      <form class="lead-form" id="lead-form" name="lead-form" method="post" action="https://script.google.com/macros/s/AKfycby_su_ObcWCOxGAjOrkiYoE07iULm8zcsPWDsRpzaZzzYk8NF5a01WYkv_F_zJiA0pHFA/exec" autocomplete="on">
+        <div class="lead-field"><label for="email">Email</label><input id="email" type="email" name="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-label="Email" placeholder="your@email.com" required></div>
+        <div class="lead-field"><label for="phone">Телефон</label><input id="phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" enterkeyhint="done" aria-label="Телефон" placeholder="+380..." required></div>
         <button class="button" type="submit">Перейти в Telegram-бот <b>→</b></button>
         <div class="lead-form__note" role="status" aria-live="polite"></div>
       </form>
@@ -186,7 +186,7 @@
 
   <script>
 
-const LEAD_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwLNTpmPD09iQg2beOFEyL3wJgpoiMntGx9xbCORjA2Nrq6sAJeGkSN2Qm4TQWhCkJstQ/exec';
+const LEAD_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycby_su_ObcWCOxGAjOrkiYoE07iULm8zcsPWDsRpzaZzzYk8NF5a01WYkv_F_zJiA0pHFA/exec';
 const TELEGRAM_BOT_URL = 'https://t.me/Olga_Venher_bot?start=ZGw6MzMwNTM1';
 const leadModal = document.querySelector('#lead-modal');
 const leadForm = document.querySelector('#lead-form');
@@ -198,7 +198,10 @@ const openLeadModal = () => {
   leadModal.classList.add('is-open');
   leadModal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
-  window.setTimeout(() => leadForm?.elements.email?.focus(), 80);
+  window.setTimeout(() => {
+    const emailInput = leadForm?.querySelector('input[name="email"]');
+    emailInput?.focus({ preventScroll: true });
+  }, 220);
 };
 
 const closeLeadModal = () => {
@@ -230,26 +233,27 @@ leadForm?.addEventListener('submit', async (event) => {
 
   leadForm.classList.add('is-loading');
   if (leadSubmit) leadSubmit.textContent = 'Зберігаємо заявку...';
-  if (leadNote) leadNote.textContent = '';
+  if (leadNote) leadNote.textContent = 'Зберігаємо заявку і відкриваємо Telegram-бот...';
 
   try {
-    const payload = {
-      email: email,
-      phone: phone
-    };
-
-    console.log('Lead webhook payload:', payload);
-
     const response = await fetch(LEAD_WEBHOOK_URL, {
       method: 'POST',
-      mode: 'no-cors',
       headers: {
-        'Content-Type': 'text/plain;charset=utf-8'
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({
+        email: email,
+        phone: phone
+      })
     });
 
-    console.log('Lead webhook request sent. no-cors response:', response);
+    console.log('Lead webhook response:', response.status, response.statusText);
+
+    if (!response.ok) {
+      const errorText = await response.text().catch(() => '');
+      console.log('Lead webhook error response:', errorText);
+      throw new Error('Webhook returned status ' + response.status);
+    }
 
     window.location.href = TELEGRAM_BOT_URL;
   } catch (error) {
@@ -259,7 +263,6 @@ leadForm?.addEventListener('submit', async (event) => {
     if (leadNote) leadNote.textContent = 'Не вдалося зберегти заявку. Відкрийте консоль, щоб побачити помилку, і спробуйте ще раз.';
   }
 });
-
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
