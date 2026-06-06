@@ -175,9 +175,9 @@
       <div class="lead-modal__kicker">Прямий ефір</div>
       <h2 id="lead-modal-title">Залиште заявку на ефір</h2>
       <p class="lead-modal__subtitle">Після заповнення заявки обов’язково долучіться в Telegram-бот ефіру — там буде доступ до матеріалів, нагадування та бонус.</p>
-      <form class="lead-form" id="lead-form" name="lead-form" method="post" action="https://script.google.com/macros/s/AKfycby_su_ObcWCOxGAjOrkiYoE07iULm8zcsPWDsRpzaZzzYk8NF5a01WYkv_F_zJiA0pHFA/exec" autocomplete="on">
-        <div class="lead-field"><label for="email">Email</label><input id="email" type="text" name="email" autocomplete="email" inputmode="text" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-label="Email" placeholder="your@email.com"></div>
-        <div class="lead-field"><label for="phone">Телефон</label><input id="phone" type="text" name="phone" autocomplete="tel" inputmode="tel" enterkeyhint="done" aria-label="Телефон" placeholder="+380..."></div>
+      <form class="lead-form" id="lead-form" name="lead-form" method="post" action="https://script.google.com/macros/s/AKfycby_su_ObcWCOxGAjOrkiYoE07iULm8zcsPWDsRpzaZzzYk8NF5a01WYkv_F_zJiA0pHFA/exec" autocomplete="on" novalidate>
+        <div class="lead-field"><label for="lead-email">Email</label><input id="lead-email" type="email" name="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-label="Email" placeholder="your@email.com"></div>
+        <div class="lead-field"><label for="lead-phone">Телефон</label><input id="lead-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" enterkeyhint="done" aria-label="Телефон" placeholder="+380..."></div>
         <button class="button" type="submit">Перейти в Telegram-бот <b>→</b></button>
         <div class="lead-form__note" role="status" aria-live="polite"></div>
       </form>
@@ -225,18 +225,33 @@ document.addEventListener('keydown', (event) => {
 
 leadForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
-  const formData = new FormData(leadForm);
-  const email = String(formData.get('email') || '').trim();
-  const phone = String(formData.get('phone') || '').trim();
+  const emailInput = leadForm.querySelector('[name="email"]');
+  const phoneInput = leadForm.querySelector('[name="phone"]');
+  const email = String(emailInput?.value || '').trim();
+  const phone = String(phoneInput?.value || '').trim();
 
   leadForm.classList.add('is-loading');
   if (leadSubmit) leadSubmit.textContent = 'Зберігаємо заявку...';
   if (leadNote) leadNote.textContent = 'Заявку прийнято. Відкриваємо Telegram-бот...';
 
+  try {
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead');
+      console.log('Meta Pixel Lead event sent');
+    }
+  } catch (error) {
+    console.log('Meta Pixel Lead event failed:', error);
+  }
+
   const payload = {
     email: email,
     phone: phone
   };
+
+  console.log({
+    email,
+    phone
+  });
 
   try {
     await fetch(LEAD_WEBHOOK_URL, {
