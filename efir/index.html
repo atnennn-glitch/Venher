@@ -175,9 +175,9 @@
       <div class="lead-modal__kicker">Прямий ефір</div>
       <h2 id="lead-modal-title">Залиште заявку на ефір</h2>
       <p class="lead-modal__subtitle">Після заповнення заявки обов’язково долучіться в Telegram-бот ефіру — там буде доступ до матеріалів, нагадування та бонус.</p>
-      <form class="lead-form" id="lead-form">
-        <label>Email<input type="email" name="email" autocomplete="email" placeholder="your@email.com" required></label>
-        <label>Телефон<input type="tel" name="phone" autocomplete="tel" placeholder="+380..." required></label>
+      <form class="lead-form" id="lead-form" autocomplete="on">
+        <div class="lead-field"><label for="email">Email</label><input id="email" type="email" name="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" placeholder="your@email.com" required></div>
+        <div class="lead-field"><label for="phone">Телефон</label><input id="phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+380..." required></div>
         <button class="button" type="submit">Перейти в Telegram-бот <b>→</b></button>
         <div class="lead-form__note" role="status" aria-live="polite"></div>
       </form>
@@ -223,38 +223,40 @@ document.addEventListener('keydown', (event) => {
 leadForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
   const formData = new FormData(leadForm);
-  const payload = {
-    email: String(formData.get('email') || '').trim(),
-    phone: String(formData.get('phone') || '').trim(),
-  };
+  const email = String(formData.get('email') || '').trim();
+  const phone = String(formData.get('phone') || '').trim();
 
-  if (!payload.email || !payload.phone) return;
+  if (!email || !phone) return;
 
   leadForm.classList.add('is-loading');
   if (leadSubmit) leadSubmit.textContent = 'Зберігаємо заявку...';
   if (leadNote) leadNote.textContent = '';
 
   try {
-    try {
-      const response = await fetch(LEAD_WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      if (!response.ok) throw new Error('Webhook error');
-    } catch (corsError) {
-      await fetch(LEAD_WEBHOOK_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(payload),
-      });
-    }
+    const payload = {
+      email: email,
+      phone: phone
+    };
+
+    console.log('Lead webhook payload:', payload);
+
+    const response = await fetch(LEAD_WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    console.log('Lead webhook request sent. no-cors response:', response);
+
     window.location.href = TELEGRAM_BOT_URL;
   } catch (error) {
+    console.log('Lead webhook request failed:', error);
     leadForm.classList.remove('is-loading');
     if (leadSubmit) leadSubmit.innerHTML = 'Перейти в Telegram-бот <b>→</b>';
-    if (leadNote) leadNote.textContent = 'Не вдалося зберегти заявку. Перевірте інтернет і спробуйте ще раз.';
+    if (leadNote) leadNote.textContent = 'Не вдалося зберегти заявку. Відкрийте консоль, щоб побачити помилку, і спробуйте ще раз.';
   }
 });
 
