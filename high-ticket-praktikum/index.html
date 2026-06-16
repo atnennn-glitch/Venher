@@ -8,6 +8,7 @@
       name="description"
       content="Практикум Ольги Венгерець для власників малого та середнього бізнесу про високу ціну, екологічні продажі та сильну пропозицію."
     />
+
     <!-- Meta Pixel Code -->
     <script>
       !function(f,b,e,v,n,t,s)
@@ -21,10 +22,16 @@
       fbq('init', '1280398327139709');
       fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1280398327139709&ev=PageView&noscript=1"
-    /></noscript>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=1280398327139709&ev=PageView&noscript=1"
+      />
+    </noscript>
     <!-- End Meta Pixel Code -->
+
     <style>
       :root {
         --bg: #0a0a0a;
@@ -102,7 +109,10 @@
       }
 
       .hero .shell {
-        display: block;
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(360px, 480px);
+        gap: 48px;
+        align-items: center;
         position: relative;
         z-index: 2;
       }
@@ -113,9 +123,11 @@
 
       .hero-portrait {
         position: relative;
-        width: min(100%, 640px);
-        margin-top: 24px;
+        width: min(100%, 480px);
+        margin-top: 0;
+        justify-self: end;
         border: 1px solid rgba(255, 122, 26, 0.28);
+        border-radius: 28px;
         background: #070707;
         overflow: hidden;
         box-shadow: 0 26px 70px rgba(0, 0, 0, 0.48);
@@ -607,7 +619,7 @@
         min-height: 360px;
         background:
           linear-gradient(90deg, rgba(242, 242, 240, 0.08), rgba(7, 8, 7, 0.16)),
-          url("olga-speaker.jpg") center top / cover no-repeat;
+          url("/high-ticket-praktikum/olga-speaker.jpg") center top / cover no-repeat;
       }
 
       .speaker {
@@ -817,6 +829,7 @@
         .hero-portrait {
           width: 100%;
           margin-top: 20px;
+          justify-self: auto;
         }
 
         .hero-badge {
@@ -946,47 +959,70 @@
       }
     </style>
   </head>
+
   <body>
     <main class="page">
       <section class="hero" id="top">
         <div class="shell">
           <div class="hero-copy">
-            <h1>Навчись піднімати ціну, продавати дорого та <span class="green">не втрачати клієнтів</span></h1>
+            <h1>
+              Навчись піднімати ціну, продавати дорого та
+              <span class="green">не втрачати клієнтів</span>
+            </h1>
+
             <div class="hero-note">
               Дізнайся, як продавати без знижок за <b>повну ціну</b>, не зважаючи на конкурентів
             </div>
+
             <div class="price-row" aria-label="Вартість">
-              <div class="price">529грн</div>
-              <div class="old-price">3500грн</div>
+              <div class="price">529 грн</div>
+              <div class="old-price">3500 грн</div>
             </div>
+
             <div class="bonus-call">
               <span>↓</span>
               <span>Доєднуйся зараз та <b class="green">отримай бонус!</b></span>
             </div>
-            <a class="button" href="https://secure.wayforpay.com/payment/sd4a152547200">Отримати доступ</a>
+
+            <a class="button" href="https://secure.wayforpay.com/payment/sd4a152547200">
+              Отримати доступ
+            </a>
+
             <div class="gift">
               <div class="gift-icon">✦</div>
               <p>15 екологічних фраз, щоб зберегти високу ціну і не втратити клієнта</p>
             </div>
-            <div class="hero-portrait" aria-label="Ольга Венгерець">
-              <div class="hero-badge">Практикум Ольги Венгерець</div>
-              <img src="hero-new.jpg" alt="Ольга Венгерець" />
-            </div>
+          </div>
+
+          <div class="hero-portrait" aria-label="Ольга Венгерець">
+            <div class="hero-badge">Практикум Ольги Венгерець</div>
+            <img src="/high-ticket-praktikum/hero-new.jpg" alt="Ольга Венгерець" />
           </div>
         </div>
       </section>
 
       <section id="for-whom">
         <div class="shell">
-          <h2 class="section-title">Практикум <span class="green">для тебе,</span><br />якщо ти:</h2>
+          <h2 class="section-title">
+            Практикум <span class="green">для тебе,</span><br />
+            якщо ти:
+          </h2>
+
           <div class="for-grid">
             <article class="dark-card">
               <h3>Власник малого чи середнього бізнесу</h3>
-              <p>Продаєш товари або послуги в B2C/B2B і боїшся підняти ціну, бо конкуренти демпінгують.</p>
+              <p>
+                Продаєш товари або послуги в B2C/B2B і боїшся підняти ціну, бо конкуренти
+                демпінгують.
+              </p>
             </article>
+
             <article class="dark-card">
               <h3>Експерт, менеджер або соло-підприємець</h3>
-              <p>Хочеш екологічно озвучувати високу вартість, працювати з “дорого” і не скидати просто прайс.</p>
+              <p>
+                Хочеш екологічно озвучувати високу вартість, працювати з “дорого” і не просто
+                скидати прайс.
+              </p>
             </article>
           </div>
         </div>
@@ -995,19 +1031,23 @@
       <section>
         <div class="shell">
           <h2 class="section-title">Після практикуму ти:</h2>
+
           <div class="after-grid">
             <article class="after-card">
               <div class="check">✓</div>
               <p>Зрозумієш, як доносити цінність та закривати клієнта на чеки вище ринку</p>
             </article>
+
             <article class="after-card">
               <div class="check">✓</div>
               <p>Зрозумієш, як пояснювати так, щоб купували без жодних знижок</p>
             </article>
+
             <article class="after-card">
               <div class="check">✓</div>
               <p>Навчишся ставити правильні запитання, які доведуть до продажу за повну ціну</p>
             </article>
+
             <article class="after-card">
               <div class="check">✓</div>
               <p>Отримаєш чіткі інструменти, щоб працювати з запереченнями</p>
@@ -1019,23 +1059,34 @@
       <section class="program" id="program">
         <div class="shell">
           <h2 class="section-title">Програма практикуму</h2>
+
           <div class="lesson-grid">
             <article class="lesson-card">
               <div class="lesson-pill">Урок 1</div>
               <h3>Нова ера продажів: чому застарілі методи з'їдають ваш дохід</h3>
+
               <ul class="lesson-list">
-                <li>Кінець продажів з 2010х: як змінились клієнти, у них в руках смартфони і розсіяний фокус уваги - як з цим працювати?</li>
+                <li>
+                  Кінець продажів з 2010-х: як змінились клієнти, у них в руках смартфони і
+                  розсіяний фокус уваги — як з цим працювати?
+                </li>
                 <li>Чому жорсткі скрипти, маніпуляції та тиск більше не працюють?</li>
-                <li>Сучасний підхід до продажів: ми більше не B2B чи B2C, ми люди, які продають людям.</li>
-                <li>Хто ставить запитання - той керує діалогом, як налаштувати для себе?</li>
+                <li>
+                  Сучасний підхід до продажів: ми більше не B2B чи B2C, ми люди, які продають
+                  людям.
+                </li>
+                <li>
+                  Хто ставить запитання — той керує діалогом. Як використовувати це у продажах?
+                </li>
               </ul>
             </article>
 
             <article class="lesson-card">
               <div class="lesson-pill">Урок 2</div>
               <h3>База високих чеків: як створити пропозицію, від якої неможливо відмовитись</h3>
+
               <ul class="lesson-list">
-                <li>Розрив між ціною та цінністю для клієнтів - як пояснювати та доносити.</li>
+                <li>Розрив між ціною та цінністю для клієнтів — як пояснювати та доносити.</li>
                 <li>Як пояснити свою перевагу над конкурентами?</li>
                 <li>Як опрацювати страхи та ризики в голові клієнта?</li>
                 <li>Як аргументувати через бонуси замість знижок?</li>
@@ -1045,20 +1096,29 @@
             <article class="lesson-card">
               <div class="lesson-pill">Урок 3</div>
               <h3>Механіки високого чеку: як екологічно пояснювати ціну</h3>
+
               <ul class="lesson-list">
-                <li>Вивчимо три техніки, аби визнати, приєднати, запитати, а ще повернути контроль і довести до продажу без знижок.</li>
+                <li>
+                  Вивчимо три техніки, щоб визнати заперечення, приєднатися до клієнта, поставити
+                  правильне запитання, повернути контроль і довести до продажу без знижок.
+                </li>
               </ul>
             </article>
 
             <article class="lesson-card bonus-lesson">
               <div class="lesson-pill gift-pill">🎁 Бонус</div>
               <h3>15 екологічних фраз, щоб зберегти високу ціну</h3>
+
               <p class="lesson-goal">
                 Бонус допоможе не губитися в моменті, коли клієнт пише “дорого”, просить знижку або
                 хоче просто отримати прайс.
               </p>
+
               <ul class="lesson-list">
-                <li>Фрази, які зберігають високу ціну і повагу в діалозі та допомагають повернути розмову до цінності та результату.</li>
+                <li>
+                  Фрази, які зберігають високу ціну і повагу в діалозі та допомагають повернути
+                  розмову до цінності та результату.
+                </li>
               </ul>
             </article>
           </div>
@@ -1071,14 +1131,19 @@
             <div class="cta-top">
               Структуруй свої продажі, навчися називати високу ціну і почни заробляти більше
             </div>
+
             <div class="cta-price">
               <p>Доєднуйся до практикуму вже зараз</p>
+
               <div class="price-row">
-                <div class="price">529грн</div>
-                <div class="old-price">3500грн</div>
+                <div class="price">529 грн</div>
+                <div class="old-price">3500 грн</div>
               </div>
             </div>
-            <a class="button" href="https://secure.wayforpay.com/payment/sd4a152547200">Отримати доступ</a>
+
+            <a class="button" href="https://secure.wayforpay.com/payment/sd4a152547200">
+              Отримати доступ
+            </a>
           </div>
         </div>
       </section>
@@ -1086,18 +1151,20 @@
       <section class="speaker" id="speaker">
         <div class="shell">
           <h2 class="section-title">Про спікера</h2>
+
           <div class="speaker-card">
             <div class="speaker-photo">
-              <img src="olga-speaker.jpg" alt="Ольга Венгерець" />
+              <img src="/high-ticket-praktikum/olga-speaker.jpg" alt="Ольга Венгерець" />
             </div>
+
             <div>
-              <h2>Авторка та спікер практикуму - Ольга Венгерець</h2>
+              <h2>Авторка та спікер практикуму — Ольга Венгерець</h2>
+
               <div class="speaker-line">
                 <b>//</b>
-                <p>
-                  Експертка з продажів і маркетингу з реальним 10-річним досвідом.
-                </p>
+                <p>Експертка з продажів і маркетингу з реальним 10-річним досвідом.</p>
               </div>
+
               <div class="speaker-line">
                 <b>//</b>
                 <p>
@@ -1105,11 +1172,10 @@
                   впевнено комунікувати цінність свого продукту.
                 </p>
               </div>
+
               <div class="speaker-line">
                 <b>//</b>
-                <p>
-                  Авторка курсів з продажів. Понад 2000 учнів уже навчила продавати.
-                </p>
+                <p>Авторка курсів з продажів. Понад 2000 учнів уже навчила продавати.</p>
               </div>
             </div>
           </div>
@@ -1119,38 +1185,49 @@
       <section class="review">
         <div class="shell">
           <h2 class="section-title">Відгуки</h2>
+
           <div class="review-track" aria-label="Відгуки учасників">
             <div class="review-card">
-              <img src="review-1.png" alt="Відгук учасниці 1" />
+              <img src="/high-ticket-praktikum/review-1.png" alt="Відгук учасниці 1" />
             </div>
+
             <div class="review-card">
-              <img src="review-2.png" alt="Відгук учасниці 2" />
+              <img src="/high-ticket-praktikum/review-2.png" alt="Відгук учасниці 2" />
             </div>
+
             <div class="review-card">
-              <img src="review-3.png" alt="Відгук учасниці 3" />
+              <img src="/high-ticket-praktikum/review-3.png" alt="Відгук учасниці 3" />
             </div>
+
             <div class="review-card">
-              <img src="review-4.png" alt="Відгук учасниці 4" />
+              <img src="/high-ticket-praktikum/review-4.png" alt="Відгук учасниці 4" />
             </div>
+
             <div class="review-card">
-              <img src="review-5.png" alt="Відгук учасниці 5" />
+              <img src="/high-ticket-praktikum/review-5.png" alt="Відгук учасниці 5" />
             </div>
+
             <div class="review-card">
-              <img src="review-6.png" alt="Відгук учасниці 6" />
+              <img src="/high-ticket-praktikum/review-6.png" alt="Відгук учасниці 6" />
             </div>
+
             <div class="review-card">
-              <img src="review-7.png" alt="Відгук учасниці 7" />
+              <img src="/high-ticket-praktikum/review-7.png" alt="Відгук учасниці 7" />
             </div>
+
             <div class="review-card">
-              <img src="review-8.png" alt="Відгук учасниці 8" />
+              <img src="/high-ticket-praktikum/review-8.png" alt="Відгук учасниці 8" />
             </div>
+
             <div class="review-card">
-              <img src="review-9.png" alt="Відгук учасниці 9" />
+              <img src="/high-ticket-praktikum/review-9.png" alt="Відгук учасниці 9" />
             </div>
+
             <div class="review-card">
-              <img src="review-10.png" alt="Відгук учасниці 10" />
+              <img src="/high-ticket-praktikum/review-10.png" alt="Відгук учасниці 10" />
             </div>
           </div>
+
           <div class="review-dots" aria-hidden="true">
             <span></span><span></span><span></span><span></span><span></span>
             <span></span><span></span><span></span><span></span><span></span>
@@ -1163,14 +1240,18 @@
           <p class="section-title">
             Почни впевнено озвучувати повну вартість та продавати дорожче конкурентів
           </p>
+
           <div class="cta-card">
             <div class="cta-price">
               <div class="price-row">
-                <div class="price">529грн</div>
-                <div class="old-price">3500грн</div>
+                <div class="price">529 грн</div>
+                <div class="old-price">3500 грн</div>
               </div>
             </div>
-            <a class="button" href="https://secure.wayforpay.com/payment/sd4a152547200">Отримати доступ</a>
+
+            <a class="button" href="https://secure.wayforpay.com/payment/sd4a152547200">
+              Отримати доступ
+            </a>
           </div>
         </div>
       </section>
@@ -1178,34 +1259,61 @@
       <section class="faq" id="faq">
         <div class="shell">
           <h2 class="section-title">Поширені запитання</h2>
+
           <div class="faq-list">
             <details>
               <summary>Як буде проходити практикум?</summary>
-              <p>Практикум складається з 3 відеоуроків: нова ера продажів, база високого чека і механіка високого чека.</p>
+              <p>
+                Практикум складається з 3 відеоуроків: нова ера продажів, база високого чека і
+                механіка високого чека.
+              </p>
             </details>
+
             <details>
               <summary>Чи буде бонус?</summary>
-              <p>Так. Бонус - 15 екологічних фраз, щоб зберегти високу ціну і не втратити клієнта.</p>
+              <p>
+                Так. Бонус — 15 екологічних фраз, щоб зберегти високу ціну і не втратити клієнта.
+              </p>
             </details>
+
             <details>
               <summary>Чи допоможе мені практикум, якщо конкуренти демпінгують?</summary>
-              <p>Так. У фокусі саме страх підняти ціну і втратити клієнтів, коли здається, що на ринку немає грошей.</p>
+              <p>
+                Так. У фокусі саме страх підняти ціну і втратити клієнтів, коли здається, що на
+                ринку немає грошей.
+              </p>
             </details>
+
             <details>
               <summary>Чи підійде це, якщо я просто скидаю прайс у відповідь на запит?</summary>
-              <p>Так. Один із ключових фокусів - перестати бути довідковим бюро і навчитися ставити глибокі запитання.</p>
+              <p>
+                Так. Один із ключових фокусів — перестати бути довідковим бюро і навчитися ставити
+                глибокі запитання.
+              </p>
             </details>
+
             <details>
               <summary>Чи підійде це моїм менеджерам з продажів?</summary>
-              <p>Так, якщо їм потрібно екологічно озвучувати ціну, працювати з “дорого” і вести клієнта до рішення без тиску.</p>
+              <p>
+                Так, якщо їм потрібно екологічно озвучувати ціну, працювати з “дорого” і вести
+                клієнта до рішення без тиску.
+              </p>
             </details>
+
             <details>
               <summary>Чи реально одразу застосувати механіки?</summary>
-              <p>Так. У третьому уроці є конкретні механіки для переписки: зустрічне питання, випередження ціни і фреймворк ААА.</p>
+              <p>
+                Так. У третьому уроці є конкретні механіки для переписки: зустрічне питання,
+                випередження ціни і фреймворк ААА.
+              </p>
             </details>
+
             <details>
               <summary>Чи підійде практикум для малого бізнесу?</summary>
-              <p>Так. Практикум створений для власників малого та середнього бізнесу: товарка, послуги, B2C і B2B.</p>
+              <p>
+                Так. Практикум створений для власників малого та середнього бізнесу: товарка,
+                послуги, B2C і B2B.
+              </p>
             </details>
           </div>
         </div>
