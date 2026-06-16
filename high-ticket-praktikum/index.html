@@ -1,1 +1,1151 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Високий чек без тиску | VENHER EDU</title>
+    <meta
+      name="description"
+      content="Практикум Ольги Венгерець для власників малого та середнього бізнесу про високу ціну, екологічні продажі та сильну пропозицію."
+    />
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --bg-2: #141414;
+        --card: #1a1a1a;
+        --card-dark: #141414;
+        --white: #f2f2f0;
+        --text: #f7f7f4;
+        --black-text: #2e2f2d;
+        --muted: #c9c9c2;
+        --line: rgba(255, 255, 255, 0.18);
+        --green: #ff7a1a;
+        --green-bright: #ff8c33;
+        --yellow: #ff7a1a;
+        --shadow: 0 28px 80px rgba(0, 0, 0, 0.44);
+      }
 
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.35;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .page {
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 75% 16%, rgba(255, 122, 26, 0.22), transparent 24%),
+          linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 48%, #0a0a0a 100%);
+      }
+
+      .shell {
+        width: min(1280px, calc(100% - 48px));
+        margin: 0 auto;
+      }
+
+      .hero {
+        min-height: 100svh;
+        display: grid;
+        align-items: center;
+        padding: 72px 0 38px;
+        background:
+          radial-gradient(circle at 76% 28%, rgba(255, 122, 26, 0.24), transparent 34%),
+          linear-gradient(120deg, rgba(10, 10, 10, 1) 0%, rgba(10, 10, 10, 0.94) 58%, rgba(26, 11, 0, 0.72) 100%);
+      }
+
+      .hero .shell {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.72fr);
+        gap: 46px;
+        align-items: center;
+      }
+
+      .hero-copy {
+        max-width: 820px;
+      }
+
+      .hero-portrait {
+        min-height: 620px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        position: relative;
+      }
+
+      .hero-portrait::before {
+        content: "";
+        position: absolute;
+        inset: 12% 4% 6%;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 122, 26, 0.22), transparent 68%);
+        filter: blur(4px);
+      }
+
+      .hero-portrait img {
+        position: relative;
+        width: min(100%, 620px);
+        max-height: 820px;
+        object-fit: contain;
+        object-position: center bottom;
+        filter: drop-shadow(0 28px 60px rgba(0, 0, 0, 0.48));
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+        color: var(--green-bright);
+        font-size: 16px;
+        font-weight: 900;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 44px;
+        height: 3px;
+        background: var(--green-bright);
+      }
+
+      h1 {
+        max-width: 850px;
+        font-size: clamp(44px, 5.8vw, 88px);
+        line-height: 1.08;
+        letter-spacing: 0;
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      .green {
+        color: var(--green);
+      }
+
+      .hero-note {
+        width: min(700px, 100%);
+        margin-top: 34px;
+        padding: 28px 34px;
+        border: 2px solid rgba(255, 255, 255, 0.38);
+        border-radius: 12px;
+        background: rgba(28, 28, 28, 0.78);
+        color: var(--text);
+        font-size: clamp(22px, 2.1vw, 34px);
+        line-height: 1.34;
+      }
+
+      .hero-note b {
+        color: var(--green-bright);
+      }
+
+      .price-row {
+        display: flex;
+        align-items: baseline;
+        gap: 24px;
+        flex-wrap: wrap;
+        margin-top: 42px;
+      }
+
+      .price {
+        font-size: clamp(58px, 6vw, 94px);
+        line-height: 1;
+        font-weight: 950;
+      }
+
+      .old-price {
+        position: relative;
+        color: rgba(255, 255, 255, 0.55);
+        font-size: clamp(34px, 3.6vw, 58px);
+      }
+
+      .old-price::after {
+        content: "";
+        position: absolute;
+        left: -4px;
+        right: -4px;
+        top: 52%;
+        height: 3px;
+        border-radius: 999px;
+        background: rgba(8, 8, 8, 0.82);
+      }
+
+      .bonus-call {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        gap: 20px;
+        align-items: center;
+        margin-top: 26px;
+        color: var(--text);
+        font-size: clamp(22px, 2vw, 32px);
+        line-height: 1.16;
+      }
+
+      .bonus-call span:first-child {
+        color: var(--muted);
+        font-size: 46px;
+        line-height: 1;
+      }
+
+      .button {
+        width: min(720px, 100%);
+        min-height: 92px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 40px;
+        padding: 0 32px;
+        border: 0;
+        border-radius: 999px;
+        background: var(--white);
+        color: var(--green);
+        font-size: clamp(24px, 2.4vw, 38px);
+        font-weight: 950;
+        text-transform: uppercase;
+        box-shadow: 0 22px 58px rgba(255, 122, 26, 0.26);
+        transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px) scale(1.015);
+        filter: brightness(1.02);
+      }
+
+      .button:active {
+        transform: scale(0.97);
+      }
+
+      .gift {
+        width: min(720px, 100%);
+        display: grid;
+        grid-template-columns: 76px 1fr;
+        gap: 18px;
+        align-items: center;
+        margin-top: 34px;
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 16px;
+        color: var(--muted);
+        font-size: 20px;
+      }
+
+      .gift-icon {
+        width: 76px;
+        height: 76px;
+        display: grid;
+        place-items: center;
+        border: 2px solid rgba(255, 255, 255, 0.24);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.08);
+        font-size: 36px;
+      }
+
+      section {
+        padding: 92px 0;
+      }
+
+      .section-title {
+        max-width: 980px;
+        margin: 0 auto 58px;
+        text-align: center;
+        font-size: clamp(42px, 5vw, 74px);
+        line-height: 1.14;
+        letter-spacing: 0;
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      .for-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px;
+        max-width: 1080px;
+        margin: 0 auto;
+      }
+
+      .dark-card {
+        min-height: 280px;
+        padding: 42px;
+        border: 2px solid rgba(255, 255, 255, 0.28);
+        border-radius: 28px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+        text-align: center;
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      }
+
+      .dark-card:hover,
+      .after-card:hover,
+      .lesson-card:hover {
+        transform: translateY(-5px) scale(1.018);
+      }
+
+      .dark-card:active,
+      .after-card:active,
+      .lesson-card:active {
+        transform: scale(0.975);
+      }
+
+      .dark-card h3 {
+        color: var(--green);
+        font-size: clamp(25px, 2.5vw, 36px);
+        line-height: 1.13;
+        font-weight: 930;
+        text-transform: uppercase;
+      }
+
+      .dark-card p {
+        margin-top: 34px;
+        color: var(--text);
+        font-size: clamp(20px, 2vw, 28px);
+        line-height: 1.45;
+      }
+
+      .after-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 38px;
+        max-width: 1120px;
+        margin: 0 auto;
+      }
+
+      .after-card {
+        min-height: 150px;
+        display: grid;
+        grid-template-columns: 108px 1fr;
+        gap: 28px;
+        align-items: center;
+        padding: 28px 38px;
+        border-radius: 24px;
+        background: var(--white);
+        color: var(--black-text);
+        box-shadow: var(--shadow);
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .check {
+        width: 86px;
+        height: 86px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: #ff7a1a;
+        color: var(--white);
+        font-size: 54px;
+        box-shadow: 0 14px 26px rgba(35, 57, 30, 0.28);
+      }
+
+      .after-card p {
+        font-size: clamp(22px, 2vw, 30px);
+        line-height: 1.32;
+        font-weight: 850;
+      }
+
+      .program {
+        background: var(--bg);
+      }
+
+      .lesson-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 34px;
+        max-width: 1120px;
+        margin: 0 auto;
+      }
+
+      .lesson-card {
+        padding: 42px;
+        border-radius: 28px;
+        border: 1px solid transparent;
+        background: #1a1a1a;
+        box-shadow: var(--shadow);
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .lesson-card.bonus-lesson {
+        border-color: rgba(255, 122, 26, 0.42);
+      }
+
+      .lesson-pill {
+        width: min(340px, 100%);
+        min-height: 70px;
+        display: grid;
+        place-items: center;
+        margin: 0 auto 36px;
+        border-radius: 14px;
+        background: linear-gradient(90deg, #ff8c33, #e85d00);
+        color: var(--white);
+        font-size: 30px;
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      .lesson-pill.gift-pill {
+        gap: 10px;
+      }
+
+      .lesson-card h3 {
+        min-height: 112px;
+        display: grid;
+        place-items: center;
+        color: var(--white);
+        text-align: center;
+        font-size: clamp(24px, 2.2vw, 34px);
+        line-height: 1.28;
+        font-weight: 920;
+        text-transform: uppercase;
+      }
+
+      .lesson-goal {
+        margin-top: 26px;
+        color: var(--green-bright);
+        font-size: 18px;
+        font-weight: 820;
+      }
+
+      .lesson-list {
+        margin: 26px 0 0;
+        padding: 30px 34px;
+        border: 2px solid rgba(255, 122, 26, 0.45);
+        border-radius: 18px;
+        list-style: none;
+      }
+
+      .lesson-list li {
+        position: relative;
+        min-height: 32px;
+        padding-left: 34px;
+        color: var(--text);
+        font-size: 19px;
+        line-height: 1.45;
+      }
+
+      .lesson-list li + li {
+        margin-top: 22px;
+      }
+
+      .lesson-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.55em;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--green-bright);
+        box-shadow: 0 0 12px rgba(255, 122, 26, 0.78);
+      }
+
+      .bridge {
+        margin-top: 22px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .cta-band {
+        padding: 0 0 92px;
+      }
+
+      .cta-card {
+        max-width: 1060px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 22px;
+        background: var(--yellow);
+        color: var(--black-text);
+        text-align: center;
+        box-shadow: var(--shadow);
+      }
+
+      .cta-top {
+        padding: 44px 44px 34px;
+        font-size: clamp(24px, 2.7vw, 39px);
+        line-height: 1.18;
+        font-weight: 920;
+        text-transform: uppercase;
+      }
+
+      .cta-price {
+        padding: 28px 24px 36px;
+        background: var(--white);
+      }
+
+      .cta-price p {
+        color: var(--black-text);
+        font-size: 30px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .cta-price .price-row {
+        justify-content: center;
+        margin-top: 18px;
+      }
+
+      .cta-price .price {
+        color: var(--green);
+        font-size: clamp(48px, 5vw, 72px);
+      }
+
+      .cta-price .old-price {
+        color: rgba(46, 47, 45, 0.7);
+        font-size: clamp(28px, 3vw, 42px);
+      }
+
+      .cta-price .old-price::after {
+        background: rgba(46, 47, 45, 0.72);
+      }
+
+      .cta-card .button {
+        margin: 36px auto 44px;
+      }
+
+      .bonus {
+        padding-top: 0;
+      }
+
+      .bonus-card {
+        max-width: 1120px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 0.9fr 1fr;
+        gap: 1px;
+        overflow: hidden;
+        border-radius: 24px;
+        background: var(--white);
+        color: var(--black-text);
+        box-shadow: var(--shadow);
+      }
+
+      .bonus-copy {
+        padding: 58px;
+      }
+
+      .bonus-copy h2 {
+        color: var(--green);
+        font-size: clamp(38px, 4vw, 62px);
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .bonus-copy p {
+        margin-top: 24px;
+        font-size: 25px;
+        line-height: 1.18;
+        font-weight: 760;
+      }
+
+      .bonus-photo {
+        min-height: 420px;
+        background:
+          linear-gradient(90deg, rgba(242, 242, 240, 0.08), rgba(7, 8, 7, 0.16)),
+          url("assets/olga-speaker.jpg") center top / cover no-repeat;
+      }
+
+      .speaker {
+        padding-top: 0;
+      }
+
+      .speaker-card {
+        max-width: 1060px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 0.46fr 1fr;
+        gap: 46px;
+        align-items: center;
+        padding: 46px;
+        border-radius: 24px;
+        background: var(--white);
+        color: var(--black-text);
+        box-shadow: var(--shadow);
+      }
+
+      .speaker-photo {
+        min-height: 420px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        border: 12px solid var(--green);
+        border-radius: 18px;
+        background: #0f0f0f;
+        transform: rotate(-5deg);
+        box-shadow: 0 18px 30px rgba(0, 0, 0, 0.22);
+        overflow: hidden;
+      }
+
+      .speaker-photo img {
+        width: 100%;
+        height: auto;
+        min-height: 420px;
+        max-height: 540px;
+        object-fit: contain;
+        object-position: center bottom;
+        background: #0f0f0f;
+      }
+
+      .speaker-card h2 {
+        color: var(--green);
+        font-size: clamp(31px, 3vw, 48px);
+        line-height: 1.05;
+        text-transform: uppercase;
+      }
+
+      .speaker-line {
+        display: grid;
+        grid-template-columns: 38px 1fr;
+        gap: 22px;
+        margin-top: 28px;
+        font-size: 24px;
+        line-height: 1.2;
+      }
+
+      .speaker-line b {
+        font-size: 32px;
+        color: var(--green);
+      }
+
+      .review {
+        text-align: center;
+      }
+
+      .review-track {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(720px, 1fr);
+        gap: 22px;
+        width: min(1240px, 100%);
+        margin: 0 auto;
+        overflow-x: auto;
+        padding: 6px 6px 26px;
+        scroll-snap-type: x mandatory;
+        scrollbar-color: var(--green) rgba(255, 255, 255, 0.12);
+      }
+
+      .review-card {
+        min-height: 0;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        border-radius: 28px;
+        background: transparent;
+        scroll-snap-align: center;
+        overflow: hidden;
+        transition: transform 180ms ease;
+      }
+
+      .review-card:hover {
+        transform: translateY(-4px) scale(1.01);
+      }
+
+      .review-card:active {
+        transform: scale(0.98);
+      }
+
+      .review-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 28px;
+      }
+
+      .review-dots {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .review-dots span {
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.28);
+      }
+
+      .review-dots span:first-child {
+        background: var(--green);
+      }
+
+      .faq {
+        padding-bottom: 80px;
+      }
+
+      .faq-list {
+        max-width: 1240px;
+        margin: 0 auto;
+      }
+
+      details {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+      }
+
+      summary {
+        min-height: 82px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        color: var(--text);
+        font-size: 22px;
+        font-weight: 850;
+        cursor: pointer;
+        list-style: none;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::after {
+        content: "+";
+        color: var(--muted);
+        font-size: 42px;
+        font-weight: 360;
+      }
+
+      details[open] summary::after {
+        content: "-";
+      }
+
+      details p {
+        max-width: 920px;
+        padding: 0 0 28px;
+        color: var(--muted);
+        font-size: 19px;
+      }
+
+      .footer {
+        padding: 52px 0 66px;
+        color: var(--text);
+        text-align: center;
+        font-size: 22px;
+        background: #0a0a0a;
+      }
+
+      .footer a {
+        display: block;
+        margin-bottom: 24px;
+        color: var(--text);
+        text-decoration: underline;
+      }
+
+      @media (max-width: 980px) {
+        .hero {
+          min-height: auto;
+          padding: 52px 0 64px;
+          background:
+            radial-gradient(circle at 50% 18%, rgba(255, 122, 26, 0.24), transparent 34%),
+            linear-gradient(180deg, rgba(10, 10, 10, 1), rgba(10, 10, 10, 0.98));
+        }
+
+        .hero .shell {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+
+        .hero-copy {
+          padding-top: 0;
+          order: 2;
+        }
+
+        .hero-portrait {
+          order: 1;
+          min-height: 420px;
+        }
+
+        .hero-portrait img {
+          max-height: 500px;
+        }
+
+        .for-grid,
+        .after-grid,
+        .lesson-grid,
+        .bonus-card,
+        .speaker-card {
+          grid-template-columns: 1fr;
+        }
+
+        .speaker-photo {
+          transform: rotate(0deg);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100% - 28px, 1280px);
+        }
+
+        section {
+          padding: 70px 0;
+        }
+
+        .hero-copy {
+          padding-top: 0;
+        }
+
+        .hero-note,
+        .dark-card,
+        .lesson-card,
+        .speaker-card,
+        .review-card {
+          padding: 24px;
+        }
+
+        .review-card {
+          padding: 0;
+        }
+
+        .button {
+          min-height: 74px;
+        }
+
+        .gift {
+          grid-template-columns: 1fr;
+        }
+
+        .for-grid,
+        .after-grid,
+        .lesson-grid {
+          gap: 18px;
+        }
+
+        .after-card {
+          grid-template-columns: 72px 1fr;
+          gap: 18px;
+          padding: 22px;
+        }
+
+        .check {
+          width: 64px;
+          height: 64px;
+          font-size: 40px;
+        }
+
+        .lesson-list {
+          padding: 22px;
+        }
+
+        .cta-top {
+          padding: 30px 20px;
+        }
+
+        .cta-price p {
+          font-size: 22px;
+        }
+
+        .bonus-photo,
+        .speaker-photo {
+          min-height: 360px;
+        }
+
+        .review-track {
+          grid-auto-columns: minmax(290px, 88vw);
+        }
+
+        summary {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero" id="top">
+        <div class="shell">
+          <div class="hero-copy">
+            <div class="eyebrow">Практикум Ольги Венгерець</div>
+            <h1>Навчись піднімати ціну, продавати дорого та <span class="green">не втрачати клієнтів</span></h1>
+            <div class="hero-note">
+              Дізнайся, як продавати без знижок за <b>повну ціну</b>, не зважаючи на конкурентів
+            </div>
+            <div class="price-row" aria-label="Вартість">
+              <div class="price">529грн</div>
+              <div class="old-price">3500грн</div>
+            </div>
+            <div class="bonus-call">
+              <span>↓</span>
+              <span>Доєднуйся зараз та <b class="green">отримай бонус!</b></span>
+            </div>
+            <a class="button" href="https://secure.wayforpay.com/payment/sd4a152547200">Отримати доступ</a>
+            <div class="gift">
+              <div class="gift-icon">✦</div>
+              <p>15 екологічних фраз, щоб зберегти високу ціну і не втратити клієнта</p>
+            </div>
+          </div>
+          <div class="hero-portrait" aria-label="Ольга Венгерець">
+            <img src="assets/hero-new.jpg" alt="Ольга Венгерець" />
+          </div>
+        </div>
+      </section>
+
+      <section id="for-whom">
+        <div class="shell">
+          <h2 class="section-title">Практикум <span class="green">для тебе,</span><br />якщо ти:</h2>
+          <div class="for-grid">
+            <article class="dark-card">
+              <h3>Власник малого чи середнього бізнесу</h3>
+              <p>Продаєш товари або послуги в B2C/B2B і боїшся підняти ціну, бо конкуренти демпінгують.</p>
+            </article>
+            <article class="dark-card">
+              <h3>Експерт, менеджер або соло-підприємець</h3>
+              <p>Хочеш екологічно озвучувати високу вартість, працювати з “дорого” і не скидати просто прайс.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="shell">
+          <h2 class="section-title">Після практикуму ти:</h2>
+          <div class="after-grid">
+            <article class="after-card">
+              <div class="check">✓</div>
+              <p>Зрозумієш, як доносити цінність та закривати клієнта на чеки вище ринку</p>
+            </article>
+            <article class="after-card">
+              <div class="check">✓</div>
+              <p>Зрозумієш, як пояснювати так, щоб купували без жодних знижок</p>
+            </article>
+            <article class="after-card">
+              <div class="check">✓</div>
+              <p>Навчишся ставити правильні запитання, які доведуть до продажу за повну ціну</p>
+            </article>
+            <article class="after-card">
+              <div class="check">✓</div>
+              <p>Отримаєш чіткі інструменти, щоб працювати з запереченнями</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="program" id="program">
+        <div class="shell">
+          <h2 class="section-title">Програма практикуму</h2>
+          <div class="lesson-grid">
+            <article class="lesson-card">
+              <div class="lesson-pill">Урок 1</div>
+              <h3>Нова ера продажів: чому застарілі методи з'їдають ваш дохід</h3>
+              <ul class="lesson-list">
+                <li>Кінець продажів з 2010х: як змінились клієнти, у них в руках смартфони і розсіяний фокус уваги - як з цим працювати?</li>
+                <li>Чому жорсткі скрипти, маніпуляції та тиск більше не працюють?</li>
+                <li>Сучасний підхід до продажів: ми більше не B2B чи B2C, ми люди, які продають людям.</li>
+                <li>Хто ставить запитання - той керує діалогом, як налаштувати для себе?</li>
+              </ul>
+            </article>
+
+            <article class="lesson-card">
+              <div class="lesson-pill">Урок 2</div>
+              <h3>База високих чеків: як створити пропозицію, від якої неможливо відмовитись</h3>
+              <ul class="lesson-list">
+                <li>Розрив між ціною та цінністю для клієнтів - як пояснювати та доносити.</li>
+                <li>Як пояснити свою перевагу над конкурентами?</li>
+                <li>Як опрацювати страхи та ризики в голові клієнта?</li>
+                <li>Як аргументувати через бонуси замість знижок?</li>
+              </ul>
+            </article>
+
+            <article class="lesson-card">
+              <div class="lesson-pill">Урок 3</div>
+              <h3>Механіки високого чеку: як екологічно пояснювати ціну</h3>
+              <ul class="lesson-list">
+                <li>Вивчимо три техніки, аби визнати, приєднати, запитати, а ще повернути контроль і довести до продажу без знижок.</li>
+              </ul>
+            </article>
+
+            <article class="lesson-card bonus-lesson">
+              <div class="lesson-pill gift-pill">🎁 Бонус</div>
+              <h3>15 екологічних фраз, щоб зберегти високу ціну</h3>
+              <p class="lesson-goal">
+                Бонус допоможе не губитися в моменті, коли клієнт пише “дорого”, просить знижку або
+                хоче просто отримати прайс.
+              </p>
+              <ul class="lesson-list">
+                <li>Фрази, які зберігають високу ціну і повагу в діалозі та допомагають повернути розмову до цінності та результату.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-band" id="buy">
+        <div class="shell">
+          <div class="cta-card">
+            <div class="cta-top">
+              Структуруй свої продажі, навчися називати високу ціну і почни заробляти більше
+            </div>
+            <div class="cta-price">
+              <p>Доєднуйся до практикуму вже зараз</p>
+              <div class="price-row">
+                <div class="price">529грн</div>
+                <div class="old-price">3500грн</div>
+              </div>
+            </div>
+            <a class="button" href="https://secure.wayforpay.com/payment/sd4a152547200">Отримати доступ</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="speaker" id="speaker">
+        <div class="shell">
+          <h2 class="section-title">Про спікера</h2>
+          <div class="speaker-card">
+            <div class="speaker-photo">
+              <img src="assets/olga-speaker.jpg" alt="Ольга Венгерець" />
+            </div>
+            <div>
+              <h2>Авторка та спікер практикуму - Ольга Венгерець</h2>
+              <div class="speaker-line">
+                <b>//</b>
+                <p>
+                  Експертка з продажів і маркетингу з реальним 10-річним досвідом.
+                </p>
+              </div>
+              <div class="speaker-line">
+                <b>//</b>
+                <p>
+                  Менторка Дія.Бізнес, яка допомагає підприємцям будувати системні продажі та
+                  впевнено комунікувати цінність свого продукту.
+                </p>
+              </div>
+              <div class="speaker-line">
+                <b>//</b>
+                <p>
+                  Авторка курсів з продажів. Понад 2000 учнів уже навчила продавати.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="review">
+        <div class="shell">
+          <h2 class="section-title">Відгуки</h2>
+          <div class="review-track" aria-label="Відгуки учасників">
+            <div class="review-card">
+              <img src="assets/review-bubbles/review-1.png" alt="Відгук учасниці 1" />
+            </div>
+            <div class="review-card">
+              <img src="assets/review-bubbles/review-2.png" alt="Відгук учасниці 2" />
+            </div>
+            <div class="review-card">
+              <img src="assets/review-bubbles/review-3.png" alt="Відгук учасниці 3" />
+            </div>
+            <div class="review-card">
+              <img src="assets/review-bubbles/review-4.png" alt="Відгук учасниці 4" />
+            </div>
+            <div class="review-card">
+              <img src="assets/review-bubbles/review-5.png" alt="Відгук учасниці 5" />
+            </div>
+            <div class="review-card">
+              <img src="assets/review-bubbles/review-6.png" alt="Відгук учасниці 6" />
+            </div>
+            <div class="review-card">
+              <img src="assets/review-bubbles/review-7.png" alt="Відгук учасниці 7" />
+            </div>
+            <div class="review-card">
+              <img src="assets/review-bubbles/review-8.png" alt="Відгук учасниці 8" />
+            </div>
+            <div class="review-card">
+              <img src="assets/review-bubbles/review-9.png" alt="Відгук учасниці 9" />
+            </div>
+            <div class="review-card">
+              <img src="assets/review-bubbles/review-10.png" alt="Відгук учасниці 10" />
+            </div>
+          </div>
+          <div class="review-dots" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-band">
+        <div class="shell">
+          <p class="section-title">
+            Почни впевнено озвучувати повну вартість та продавати дорожче конкурентів
+          </p>
+          <div class="cta-card">
+            <div class="cta-price">
+              <div class="price-row">
+                <div class="price">529грн</div>
+                <div class="old-price">3500грн</div>
+              </div>
+            </div>
+            <a class="button" href="https://secure.wayforpay.com/payment/sd4a152547200">Отримати доступ</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq" id="faq">
+        <div class="shell">
+          <h2 class="section-title">Поширені запитання</h2>
+          <div class="faq-list">
+            <details>
+              <summary>Як буде проходити практикум?</summary>
+              <p>Практикум складається з 3 відеоуроків: нова ера продажів, база високого чека і механіка високого чека.</p>
+            </details>
+            <details>
+              <summary>Чи буде бонус?</summary>
+              <p>Так. Бонус - 15 екологічних фраз, щоб зберегти високу ціну і не втратити клієнта.</p>
+            </details>
+            <details>
+              <summary>Чи допоможе мені практикум, якщо конкуренти демпінгують?</summary>
+              <p>Так. У фокусі саме страх підняти ціну і втратити клієнтів, коли здається, що на ринку немає грошей.</p>
+            </details>
+            <details>
+              <summary>Чи підійде це, якщо я просто скидаю прайс у відповідь на запит?</summary>
+              <p>Так. Один із ключових фокусів - перестати бути довідковим бюро і навчитися ставити глибокі запитання.</p>
+            </details>
+            <details>
+              <summary>Чи підійде це моїм менеджерам з продажів?</summary>
+              <p>Так, якщо їм потрібно екологічно озвучувати ціну, працювати з “дорого” і вести клієнта до рішення без тиску.</p>
+            </details>
+            <details>
+              <summary>Чи реально одразу застосувати механіки?</summary>
+              <p>Так. У третьому уроці є конкретні механіки для переписки: зустрічне питання, випередження ціни і фреймворк ААА.</p>
+            </details>
+            <details>
+              <summary>Чи підійде практикум для малого бізнесу?</summary>
+              <p>Так. Практикум створений для власників малого та середнього бізнесу: товарка, послуги, B2C і B2B.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <a href="https://venher-edu.com.ua/politika">Політика конфіденційності</a>
+        <a href="https://venher-edu.com.ua/oferta">Публічна оферта</a>
+        <p>ФОП Венгерець Ольга Юріївна</p>
+      </footer>
+    </main>
+  </body>
+</html>
