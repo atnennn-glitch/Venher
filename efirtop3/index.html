@@ -8,6 +8,28 @@
       name="description"
       content="Живий ефір Ольги Венгерець: ТОП-3 інструменти, як зробити х3 у продажах за місяць. 7 липня о 19:00 за Києвом."
     />
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1280398327139709');
+      fbq('track', 'PageView');
+    </script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=1280398327139709&ev=PageView&noscript=1"
+      />
+    </noscript>
+    <!-- End Meta Pixel Code -->
     <style>
       :root {
         --bg: #0a0a0a;
@@ -85,6 +107,15 @@
         background:
           radial-gradient(circle at 80% 28%, rgba(255, 122, 26, 0.24), transparent 34%),
           linear-gradient(120deg, #0a0a0a 0%, rgba(10, 10, 10, 0.95) 58%, rgba(30, 12, 0, 0.78) 100%);
+      }
+
+      @media (min-width: 901px) {
+        .hero {
+          background:
+            linear-gradient(90deg, #0a0a0a 0%, rgba(10, 10, 10, 0.98) 46%, rgba(10, 10, 10, 0.72) 62%, rgba(30, 12, 0, 0.88) 100%),
+            url("olga-speaker.jpg") right 10% center / min(40vw, 520px) auto no-repeat,
+            linear-gradient(120deg, #0a0a0a 0%, rgba(10, 10, 10, 0.95) 58%, rgba(30, 12, 0, 0.78) 100%);
+        }
       }
 
       .hero-grid {
@@ -584,6 +615,19 @@
         grid-template-columns: 1fr;
       }
 
+      .form-card.cta-only .form-copy {
+        justify-items: center;
+        text-align: center;
+      }
+
+      .form-card.cta-only .eyebrow {
+        justify-content: center;
+      }
+
+      .form-card.cta-only .button {
+        max-width: 760px;
+      }
+
       .form-copy {
         display: grid;
         align-content: start;
@@ -715,6 +759,26 @@
         border-top: 1px solid var(--line);
         color: rgba(247, 247, 244, 0.56);
         font-size: 14px;
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: rgba(247, 247, 244, 0.72);
+        text-decoration: underline;
+        text-underline-offset: 4px;
       }
 
       @media (max-width: 900px) {
@@ -925,7 +989,7 @@
         <div class="shell">
           <div class="speaker-card">
             <div class="speaker-photo">
-              <img src="assets/hero-new.jpg" alt="Ольга Венгерець" />
+              <img src="hero-new.jpg" alt="Ольга Венгерець" />
             </div>
             <div class="speaker-info">
               <div class="expert-eyebrow">Спікер живого ефіру</div>
@@ -976,7 +1040,13 @@
     </main>
 
     <footer>
-      <div class="shell">ФОП Венгерець Ольга Юріївна · VENHER EDU</div>
+      <div class="shell footer-inner">
+        <div>ФОП Венгерець Ольга Юріївна · VENHER EDU</div>
+        <div class="footer-links">
+          <a href="https://venher-edu.com.ua/politika" target="_blank" rel="noreferrer">Політика конфіденційності</a>
+          <a href="https://venher-edu.com.ua/oferta" target="_blank" rel="noreferrer">Публічна оферта</a>
+        </div>
+      </div>
     </footer>
 
     <div class="modal" id="registration-modal" aria-hidden="true">
