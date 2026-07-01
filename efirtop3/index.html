@@ -878,7 +878,11 @@
         }
 
         .hero h1 {
-          max-width: calc(100% - 120px);
+          max-width: calc(100% - 130px);
+        }
+
+        .hero-note {
+          margin-top: 28px;
         }
 
         .cards-2,
@@ -888,36 +892,36 @@
 
         .hero-photo {
           position: absolute;
-          top: 80px;
-          right: -42px;
+          top: 124px;
+          right: 12px;
           z-index: 1;
-          width: min(58vw, 230px);
+          width: min(32vw, 128px);
           margin-top: 0;
-          border: 0;
-          border-radius: 0;
-          background: transparent;
-          box-shadow: none;
-          overflow: visible;
+          border: 1px solid rgba(255, 122, 26, 0.55);
+          border-radius: 18px;
+          background: #101010;
+          box-shadow: 0 22px 48px rgba(0, 0, 0, 0.5);
+          overflow: hidden;
         }
 
         .hero-photo::after {
-          display: none;
+          display: block;
+          background: linear-gradient(180deg, transparent 62%, rgba(0, 0, 0, 0.42));
         }
 
         .hero-photo img {
-          aspect-ratio: auto;
-          object-fit: contain;
-          object-position: center bottom;
-          filter: drop-shadow(0 24px 38px rgba(0, 0, 0, 0.58));
+          aspect-ratio: 1 / 1.32;
+          object-fit: cover;
+          object-position: center top;
+          filter: none;
         }
 
         .hero-photo-full {
-          display: none;
+          display: block;
         }
 
         .hero-photo-cutout {
-          display: block;
-          height: auto;
+          display: none;
         }
 
         .photo-badge {
@@ -1012,7 +1016,6 @@
             <div class="meta-row" aria-label="Дата і формат ефіру">
               <div class="meta-pill">7 липня, вівторок</div>
               <div class="meta-pill">19:00 за Києвом</div>
-              <div class="meta-pill">Прямий ефір</div>
             </div>
 
             <button class="button js-open-modal" type="button">Забронювати місце та забрати бонус</button>
@@ -1020,7 +1023,7 @@
 
           <div class="hero-photo">
             <img class="hero-photo-full" src="/efirtop3/hero-new.jpg" alt="Ольга Венгерець" onerror="this.onerror=null;this.src='hero-new.jpg'" />
-            <img class="hero-photo-cutout" src="/efirtop3/olga-hero-clear.png?v=2" alt="Ольга Венгерець" onerror="this.onerror=null;this.src='olga-hero-clear.png'" />
+            <img class="hero-photo-cutout" src="/efirtop3/olga-hero-clean.png?v=5" alt="Ольга Венгерець" onerror="this.onerror=null;this.src='olga-hero-clean.png'" />
             <div class="photo-badge">
               <strong>Ольга Венгерець</strong>
               <span>менторка Дія.Бізнес</span>
