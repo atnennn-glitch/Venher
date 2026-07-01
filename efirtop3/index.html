@@ -111,8 +111,8 @@
 
       .hero-grid {
         display: grid;
-        grid-template-columns: minmax(0, 820px);
-        gap: 46px;
+        grid-template-columns: minmax(0, 0.95fr) minmax(340px, 430px);
+        gap: 42px;
         align-items: center;
       }
 
@@ -161,25 +161,76 @@
       .meta-row {
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
-        margin: 24px 0;
+        gap: 8px;
+        margin: 22px 0;
       }
 
       .meta-pill {
         display: inline-flex;
         align-items: center;
-        min-height: 44px;
-        padding: 10px 15px;
+        min-height: 34px;
+        padding: 7px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.34);
         border-radius: 999px;
-        background: var(--paper);
-        color: var(--ink);
-        font-size: 14px;
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(247, 247, 244, 0.88);
+        font-size: 12px;
         font-weight: 900;
         text-transform: uppercase;
       }
 
       .hero-layout-form {
         width: min(560px, 100%);
+      }
+
+      .hero-photo {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 122, 26, 0.34);
+        border-radius: 18px;
+        background: #101010;
+        box-shadow: var(--shadow);
+      }
+
+      .hero-photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 56%, rgba(0, 0, 0, 0.62));
+        pointer-events: none;
+      }
+
+      .hero-photo img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      .photo-badge {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        z-index: 2;
+        display: grid;
+        gap: 4px;
+        padding: 14px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.52);
+        border-radius: 14px;
+        background: rgba(17, 17, 17, 0.8);
+        color: var(--text);
+        backdrop-filter: blur(8px);
+      }
+
+      .photo-badge strong {
+        font-size: 20px;
+        line-height: 1.1;
+      }
+
+      .photo-badge span {
+        color: rgba(247, 247, 244, 0.74);
+        font-weight: 800;
       }
 
       .button,
@@ -315,8 +366,9 @@
         min-height: 100%;
         padding: 24px;
         border-radius: 22px;
-        background: var(--orange);
-        color: #111;
+        border: 1px solid rgba(255, 122, 26, 0.34);
+        background: #101010;
+        color: var(--text);
       }
 
       .feature-card h3 {
@@ -327,10 +379,11 @@
       }
 
       .feature-card p {
-        margin-top: 32px;
+        margin-top: 20px;
         max-width: 470px;
         font-size: 18px;
         font-weight: 750;
+        color: rgba(247, 247, 244, 0.76);
       }
 
       .check-list {
@@ -402,40 +455,31 @@
 
       .bonus-block {
         display: grid;
-        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
         gap: 20px;
         align-items: stretch;
       }
 
-      .bonus-title-card {
-        display: grid;
-        align-content: space-between;
-        min-height: 100%;
-        padding: 28px;
-        border-radius: 22px;
-        background:
-          radial-gradient(circle at 86% 14%, rgba(255, 255, 255, 0.32), transparent 28%),
-          linear-gradient(135deg, var(--orange), var(--orange-bright));
-        color: #111;
-      }
-
-      .bonus-title-card h2 {
-        font-size: clamp(34px, 4vw, 58px);
-        line-height: 1.02;
-        text-transform: uppercase;
-      }
-
-      .bonus-title-card p {
-        max-width: 420px;
-        margin-top: 30px;
-        color: rgba(17, 17, 17, 0.82);
-        font-size: 20px;
-        font-weight: 850;
-      }
-
+      .bonus-photo,
       .bonus-message {
         border: 1px solid rgba(255, 122, 26, 0.48);
         border-radius: 22px;
+        overflow: hidden;
+      }
+
+      .bonus-photo {
+        background: #111;
+      }
+
+      .bonus-photo img {
+        width: 100%;
+        height: 100%;
+        min-height: 360px;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .bonus-message {
         background: #fff9f3;
         color: var(--ink);
         box-shadow: 0 26px 70px rgba(255, 122, 26, 0.16);
@@ -462,6 +506,12 @@
         text-transform: uppercase;
       }
 
+      .bonus-message-intro {
+        color: rgba(41, 42, 40, 0.74);
+        font-size: 19px;
+        font-weight: 850;
+      }
+
       .bonus-message-body p {
         padding: 14px 16px;
         border-radius: 14px;
@@ -475,7 +525,7 @@
       .speaker-card {
         display: grid;
         grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
-        gap: 26px;
+        gap: 24px;
         align-items: stretch;
       }
 
@@ -492,7 +542,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, transparent 54%, rgba(0, 0, 0, 0.55));
+        background: linear-gradient(180deg, transparent 54%, rgba(0, 0, 0, 0.58));
         pointer-events: none;
       }
 
@@ -609,6 +659,8 @@
       .form-card.cta-only .form-copy {
         justify-items: center;
         text-align: center;
+        max-width: 860px;
+        margin: 0 auto;
       }
 
       .form-card.cta-only .eyebrow {
@@ -616,7 +668,7 @@
       }
 
       .form-card.cta-only .button {
-        max-width: 760px;
+        max-width: 720px;
       }
 
       .form-copy {
@@ -792,6 +844,20 @@
           grid-template-columns: 1fr;
         }
 
+        .speaker-photo {
+          min-height: auto;
+          order: 2;
+        }
+
+        .speaker-photo img {
+          aspect-ratio: 4 / 5;
+          height: auto;
+        }
+
+        .speaker-info {
+          order: 1;
+        }
+
         section {
           padding: 56px 0;
         }
@@ -816,9 +882,15 @@
         }
 
         .meta-pill {
-          width: 100%;
-          justify-content: center;
-          border-radius: 12px;
+          border-radius: 999px;
+        }
+
+        .meta-row {
+          gap: 7px;
+        }
+
+        .hero-photo {
+          margin-top: 8px;
         }
 
         .form-card {
@@ -866,6 +938,13 @@
             </div>
           </div>
 
+          <div class="hero-photo">
+            <img src="hero-new.jpg" alt="Ольга Венгерець" />
+            <div class="photo-badge">
+              <strong>Ольга Венгерець</strong>
+              <span>менторка Дія.Бізнес</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -903,10 +982,10 @@
         <div class="shell">
           <div class="learn-grid">
             <article class="feature-card">
-              <h3>Що розберемо на ефірі</h3>
+              <h3>Що розберемо на ефірі:</h3>
               <p>
-                Три практичні інструменти, які допомагають знайти вузьке місце в продажах,
-                посилити оффер і швидше перевести контакт у покупку.
+                3 практичні інструменти, які покажуть, де ви втрачаєте гроші прямо зараз, та як
+                зробити так, щоб клієнти купували швидше.
               </p>
             </article>
 
@@ -914,22 +993,31 @@
               <article class="check-item">
                 <div class="check">✓</div>
                 <div>
-                  <h3>Як побачити, чому продажі не ростуть</h3>
-                  <p>Розкладемо шлях клієнта і знайдемо етапи, де бізнес втрачає гроші.</p>
+                  <h3>Чому ліди є, а продажів немає?</h3>
+                  <p>
+                    Знайдемо ту саму дірку у ваших продажах, через яку клієнти йдуть думати і не
+                    повертаються, та назавжди закриємо її.
+                  </p>
                 </div>
               </article>
               <article class="check-item">
                 <div class="check">✓</div>
                 <div>
-                  <h3>Як підсилити пропозицію без демпінгу</h3>
-                  <p>Покажемо, що саме робить оффер цінним і зрозумілим для клієнта.</p>
+                  <h3>Готові рішення на 1-2-3</h3>
+                  <p>
+                    Дамо прості кроки: що змінити в спілкуванні та підходах, щоб зробити х3 в касі
+                    вже цього місяця. Легко адаптується під будь-який проєкт чи команду.
+                  </p>
                 </div>
               </article>
               <article class="check-item">
                 <div class="check">✓</div>
                 <div>
-                  <h3>Як застосувати інструменти одразу</h3>
-                  <p>Отримаєте просту логіку, яку можна перенести у свій бізнес, команду або клієнтський проєкт.</p>
+                  <h3>Як створити сильну пропозицію</h3>
+                  <p>
+                    Розберемо, як продавати за повну вартість без жодних знижок, демпінгу та
+                    постійного виправдовування ціни.
+                  </p>
                 </div>
               </article>
             </div>
@@ -940,11 +1028,12 @@
       <section>
         <div class="shell">
           <div class="case-strip">
-            <h2>ТОП-3 інструменти — реальні розбори бізнесу</h2>
+            <h2>ТОП-3 інструменти на реальних кейсах</h2>
             <div class="case-list">
-              <p>Як знаходити приховані точки росту, коли “заявки є, але продажі просідають”.</p>
-              <p>Як змінювати комунікацію так, щоб клієнт бачив цінність швидше.</p>
-              <p>Як перенести рішення з кейсів у свій продукт без копіювання чужої стратегії.</p>
+              <p>Без води: розбираємо чужі помилки та перемоги.</p>
+              <p>Що робити, коли запитів багато, а клієнти питають ціну і йдуть думати?</p>
+              <p>Як відповідати клієнту так, щоб у нього не виникало питання “чому так дорого?”, а хотілося купити.</p>
+              <p>Як адаптувати найкрутіші стратегії з ринку саме під ваш бізнес?</p>
             </div>
           </div>
         </div>
@@ -953,20 +1042,20 @@
       <section id="bonus">
         <div class="shell">
           <div class="bonus-block">
-            <article class="bonus-title-card">
-              <h2>Бонус після реєстрації</h2>
-              <p>
-                Заберіть бонус у боті після реєстрації та одразу отримайте доступ до корисного відео
-                перед ефіром.
-              </p>
+            <article class="bonus-photo">
+              <img src="bonus-video.jpeg" alt="Бонусний відеоурок по продажах" />
             </article>
 
             <article class="bonus-message">
               <div class="bonus-message-body">
-                <div class="bonus-message-title">У бонусному відео ви дізнаєтесь:</div>
-                <p>ТОП правил перших повідомлень — як не злити клієнта на старті</p>
+                <div class="bonus-message-title">Бонус після реєстрації</div>
+                <p class="bonus-message-intro">
+                  Після реєстрації ви одразу отримаєте доступ до корисного відеоуроку по продажах.
+                </p>
+                <strong>Ви дізнаєтесь:</strong>
+                <p>ТОП правил перших повідомлень: як не злити клієнта на старті</p>
                 <p>Реальні приклади з різних ніш: товари, послуги, експертиза</p>
-                <p>Фішки, які створюють ефект вау-сервісу вже з першого діалогу</p>
+                <p>Фішки, які створюють ефект вау-сервісу вже з перших секунд з клієнтом</p>
               </div>
             </article>
           </div>
@@ -980,7 +1069,7 @@
         <div class="shell">
           <div class="speaker-card">
             <div class="speaker-photo">
-<img src="/efirtop3/hero-new.jpg" alt="Ольга Венгерець" />
+              <img src="olga-speaker.jpg" alt="Ольга Венгерець" />
             </div>
             <div class="speaker-info">
               <div class="expert-eyebrow">Спікер живого ефіру</div>
