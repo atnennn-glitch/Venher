@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ТОП-3 інструменти для x3 у продажах | VENHER EDU</title>
+    <title>ТОП-3 інструменти для х3 у продажах | VENHER EDU</title>
     <meta
       name="description"
       content="Живий ефір Ольги Венгерець: ТОП-3 інструменти, як зробити х3 у продажах за місяць. 7 липня о 19:00 за Києвом."
@@ -104,6 +104,7 @@
         display: grid;
         align-items: center;
         padding: 38px 0 32px;
+        position: relative;
         background:
           radial-gradient(circle at 80% 28%, rgba(255, 122, 26, 0.24), transparent 34%),
           linear-gradient(120deg, #0a0a0a 0%, rgba(10, 10, 10, 0.95) 58%, rgba(30, 12, 0, 0.78) 100%);
@@ -111,9 +112,16 @@
 
       .hero-grid {
         display: grid;
-        grid-template-columns: minmax(0, 0.95fr) minmax(340px, 430px);
-        gap: 42px;
+        grid-template-columns: minmax(0, 0.98fr) minmax(340px, 440px);
+        grid-template-areas:
+          "copy photo"
+          "actions photo";
+        gap: 44px;
         align-items: center;
+      }
+
+      .hero-copy {
+        grid-area: copy;
       }
 
       .eyebrow {
@@ -145,6 +153,10 @@
 
       .orange {
         color: var(--orange);
+      }
+
+      .hero h1 .orange {
+        text-transform: none;
       }
 
       .hero-note {
@@ -180,16 +192,20 @@
       }
 
       .hero-layout-form {
+        grid-area: actions;
         width: min(560px, 100%);
       }
 
       .hero-photo {
+        grid-area: photo;
         position: relative;
         overflow: hidden;
-        border: 1px solid rgba(255, 122, 26, 0.34);
-        border-radius: 18px;
+        justify-self: end;
+        width: min(100%, 440px);
+        border: 1px solid rgba(255, 122, 26, 0.4);
+        border-radius: 28px;
         background: #101010;
-        box-shadow: var(--shadow);
+        box-shadow: 0 34px 90px rgba(0, 0, 0, 0.5);
       }
 
       .hero-photo::after {
@@ -202,9 +218,13 @@
 
       .hero-photo img {
         width: 100%;
-        aspect-ratio: 4 / 5;
+        aspect-ratio: 4 / 5.25;
         object-fit: cover;
         object-position: center top;
+      }
+
+      .hero-photo-cutout {
+        display: none;
       }
 
       .photo-badge {
@@ -831,6 +851,10 @@
           padding-top: 32px;
         }
 
+        .hero-grid {
+          position: relative;
+        }
+
         .hero-grid,
         .learn-grid,
         .case-strip,
@@ -840,9 +864,64 @@
           grid-template-columns: 1fr;
         }
 
+        .hero-grid {
+          grid-template-areas:
+            "copy"
+            "actions";
+          gap: 22px;
+        }
+
+        .hero-copy,
+        .hero-layout-form {
+          position: relative;
+          z-index: 2;
+        }
+
+        .hero h1 {
+          max-width: calc(100% - 120px);
+        }
+
         .cards-2,
         .cards-3 {
           grid-template-columns: 1fr;
+        }
+
+        .hero-photo {
+          position: absolute;
+          top: 80px;
+          right: -42px;
+          z-index: 1;
+          width: min(58vw, 230px);
+          margin-top: 0;
+          border: 0;
+          border-radius: 0;
+          background: transparent;
+          box-shadow: none;
+          overflow: visible;
+        }
+
+        .hero-photo::after {
+          display: none;
+        }
+
+        .hero-photo img {
+          aspect-ratio: auto;
+          object-fit: contain;
+          object-position: center bottom;
+          filter: drop-shadow(0 24px 38px rgba(0, 0, 0, 0.58));
+        }
+
+        .hero-photo-full {
+          display: none;
+        }
+
+        .hero-photo-cutout {
+          display: block;
+          height: auto;
+        }
+
+        .photo-badge {
+          display: none;
         }
 
         .speaker-photo {
@@ -920,27 +999,28 @@
     <main class="page">
       <section class="hero" id="top">
         <div class="shell hero-grid">
-          <div>
+          <div class="hero-copy">
             <div class="eyebrow">Живий ефір по продажах</div>
             <h1>ТОП-3 інструменти, як зробити <span class="orange">х3 у продажах</span> за місяць</h1>
             <div class="hero-note">
               Реальні розбори бізнесу та конкретні дії, які ви зможете одразу примінити у своєму
               проєкті або в роботі з клієнтами.
             </div>
+          </div>
 
+          <div class="hero-layout-form">
             <div class="meta-row" aria-label="Дата і формат ефіру">
               <div class="meta-pill">7 липня, вівторок</div>
               <div class="meta-pill">19:00 за Києвом</div>
               <div class="meta-pill">Прямий ефір</div>
             </div>
 
-            <div class="hero-layout-form">
-              <button class="button js-open-modal" type="button">Забронювати місце та забрати бонус</button>
-            </div>
+            <button class="button js-open-modal" type="button">Забронювати місце та забрати бонус</button>
           </div>
 
           <div class="hero-photo">
-            <img src="/efirtop3/hero-new.jpg" alt="Ольга Венгерець" />
+            <img class="hero-photo-full" src="/efirtop3/hero-new.jpg" alt="Ольга Венгерець" onerror="this.onerror=null;this.src='hero-new.jpg'" />
+            <img class="hero-photo-cutout" src="/efirtop3/olga-hero-clear.png?v=2" alt="Ольга Венгерець" onerror="this.onerror=null;this.src='olga-hero-clear.png'" />
             <div class="photo-badge">
               <strong>Ольга Венгерець</strong>
               <span>менторка Дія.Бізнес</span>
@@ -1044,7 +1124,7 @@
         <div class="shell">
           <div class="bonus-block">
             <article class="bonus-photo">
-              <img src="/efirtop3/bonus-video.jpeg" alt="Бонусний відеоурок по продажах" />
+              <img src="/efirtop3/bonus-video.jpeg" alt="Бонусний відеоурок по продажах" onerror="this.onerror=null;this.src='bonus-video.jpeg'" />
             </article>
 
             <article class="bonus-message">
@@ -1070,7 +1150,7 @@
         <div class="shell">
           <div class="speaker-card">
             <div class="speaker-photo">
-              <img src="/efirtop3/olga-speaker.jpg" alt="Ольга Венгерець" />
+              <img src="/efirtop3/olga-speaker.jpg" alt="Ольга Венгерець" onerror="this.onerror=null;this.src='olga-speaker.jpg'" />
             </div>
             <div class="speaker-info">
               <div class="expert-eyebrow">Спікер живого ефіру</div>
