@@ -50,15 +50,30 @@ consultationForm.addEventListener('submit', async (event) => {
   submitLabel.textContent = 'Надсилаємо…';
 
   try {
+    const formData = new FormData(consultationForm);
+    const payload = Object.fromEntries(formData.entries());
+    payload.pageUrl = window.location.href;
+    payload.submittedAt = new Date().toISOString();
+
     const response = await fetch(consultationForm.action, {
       method: 'POST',
-      body: new FormData(consultationForm),
-      headers: { Accept: 'application/json' }
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
     });
-    const result = await response.json();
+    const responseText = await response.text();
+    let result;
 
-    if (!response.ok || !result.ok) {
-      throw new Error(result.message || 'Не вдалося надіслати заявку.');
+    try {
+      result = JSON.parse(responseText);
+    } catch {
+      throw new Error('Сервер повернув некоректну відповідь. Спробуйте ще раз пізніше.');
+    }
+
+    if (!response.ok || !result.success) {
+      throw new Error(result.error || 'Не вдалося надіслати заявку.');
     }
 
     formSuccess.hidden = false;
