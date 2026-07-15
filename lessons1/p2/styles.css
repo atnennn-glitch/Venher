@@ -63,6 +63,8 @@ h1 em { color: var(--orange); font-style: italic; font-weight: 800; white-space:
 .scroll-arrow { grid-column: 2; grid-row: 1; display: grid; place-items: center; width: 58px; height: 58px; margin-top: 5px; border: 1px solid var(--orange); border-radius: 50%; color: var(--orange); text-decoration: none; font-size: 28px; line-height: 1; transition: background .25s, color .25s, transform .25s; animation: arrow-float 1.8s ease-in-out infinite; }
 .scroll-arrow:hover { background: var(--orange); color: #090909; transform: translateY(4px); }
 @keyframes arrow-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 7px; } }
+.consultation-announcement { margin: 72px auto 0; color: var(--orange); font-size: clamp(34px, 5.2vw, 76px); font-weight: 800; line-height: .98; letter-spacing: -.06em; text-align: center; text-transform: uppercase; }
+.consultation-announcement strong { color: var(--orange); font-style: italic; font-weight: 800; }
 
 .consultation h2 { margin: 0; font-size: clamp(48px, 6.5vw, 92px); line-height: .95; letter-spacing: -.065em; }
 
@@ -73,8 +75,8 @@ h1 em { color: var(--orange); font-style: italic; font-weight: 800; white-space:
 .consultation-points li { display: flex; align-items: center; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); color: #d8d8d3; font-size: 14px; }
 .consultation-points li span { color: var(--orange); font-size: 11px; font-weight: 800; }
 .consultation-form { position: relative; padding: 34px; background: var(--cream); color: #0a0a0a; }
-.form-heading { display: flex; justify-content: space-between; margin-bottom: 42px; padding-bottom: 18px; border-bottom: 1px solid rgba(0,0,0,.17); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
-.form-heading span:last-child { color: #e35f00; }
+.form-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; margin-bottom: 42px; padding-bottom: 18px; border-bottom: 1px solid rgba(0,0,0,.17); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.form-heading span:last-child { color: #e35f00; text-align: right; }
 .consultation-form label { display: block; margin-bottom: 26px; }
 .consultation-form label > span { display: block; margin-bottom: 9px; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .consultation-form input, .consultation-form textarea { width: 100%; padding: 13px 0; border: 0; border-bottom: 1px solid rgba(0,0,0,.3); border-radius: 0; outline: 0; resize: vertical; background: transparent; color: #0a0a0a; font: 500 16px/1.4 "Manrope", sans-serif; }
@@ -131,6 +133,7 @@ h1 em { color: var(--orange); font-style: italic; font-weight: 800; white-space:
   .video-after { grid-template-columns: 1fr auto; }
   .video-hint { grid-column: 1; text-align: left; }
   .scroll-arrow { grid-column: 2; width: 48px; height: 48px; margin-top: 0; }
+  .consultation-announcement { margin-top: 48px; font-size: 9.2vw; }
   .consultation-form { padding: 26px 22px; }
   .form-heading { margin-bottom: 34px; }
   .site-footer { grid-template-columns: 1fr auto; gap: 35px; }
