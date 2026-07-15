@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Як побудувати сильну систему продажів | VENHER EDU</title>
-    <meta name="description" content="Жива лекція Ольги Венгерець: як побудувати сильну систему продажів та перестати втрачати кошти кожен день. 12:00 за Києвом.">
+    <meta name="description" content="Жива лекція Ольги Венгерець: як побудувати сильну систему продажів та перестати втрачати кошти кожен день. 21 липня о 19:00 за Києвом.">
     <!-- Meta Pixel Code -->
     <script>
       !function(f,b,e,v,n,t,s)
@@ -1021,8 +1021,8 @@
 
           <div class="hero-layout-form">
             <div class="meta-row" aria-label="Дата і формат лекції">
-              <div class="meta-pill" data-efir-date="">четвер, 16 липня</div>
-              <div class="meta-pill">12:00 за Києвом</div>
+              <div class="meta-pill">вівторок, 21 липня</div>
+              <div class="meta-pill">19:00 за Києвом</div>
             </div>
 
             <button class="button js-open-modal" type="button">Забронювати місце та забрати бонус</button>
@@ -1192,7 +1192,7 @@
         <div class="shell">
           <div class="form-card cta-only">
             <div class="form-copy">
-              <div class="eyebrow">Жива лекція <span data-efir-date-short="">16 липня</span> о 12:00 за Києвом</div>
+              <div class="eyebrow">Жива лекція 21 липня о 19:00 за Києвом</div>
               <h2>Забронюйте місце та заберіть бонус</h2>
               <button class="button js-open-modal" type="button">Забронювати місце та забрати бонус</button>
             </div>
@@ -1233,51 +1233,8 @@
     </div>
 
     <script>
-      const botUrl = "https://t.me/Olga_Venher_bot?start=ZGw6MzMzNzU3";
+      const botUrl = "https://telegram.me/Olga_Venher_bot?start=ZGw6MzM0NTU4";
       const modal = document.querySelector("#registration-modal");
-
-      function getNextKyivDate() {
-        const kyivParts = new Intl.DateTimeFormat("en-CA", {
-          timeZone: "Europe/Kyiv",
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-        }).formatToParts(new Date());
-        const value = Object.fromEntries(kyivParts.map((part) => [part.type, part.value]));
-        const todayUtc = Date.UTC(Number(value.year), Number(value.month) - 1, Number(value.day));
-        return new Date(todayUtc + 24 * 60 * 60 * 1000);
-      }
-
-      function updateEfirDate() {
-        const months = [
-          "січня",
-          "лютого",
-          "березня",
-          "квітня",
-          "травня",
-          "червня",
-          "липня",
-          "серпня",
-          "вересня",
-          "жовтня",
-          "листопада",
-          "грудня",
-        ];
-        const weekdays = ["неділя", "понеділок", "вівторок", "середа", "четвер", "п'ятниця", "субота"];
-        const date = getNextKyivDate();
-        const day = date.getUTCDate();
-        const month = months[date.getUTCMonth()];
-        const weekday = weekdays[date.getUTCDay()];
-
-        document.querySelectorAll("[data-efir-date]").forEach((element) => {
-          element.textContent = `${weekday}, ${day} ${month}`;
-        });
-        document.querySelectorAll("[data-efir-date-short]").forEach((element) => {
-          element.textContent = `${day} ${month}`;
-        });
-      }
-
-      updateEfirDate();
 
       document.querySelectorAll(".js-open-modal").forEach((button) => {
         button.addEventListener("click", () => {
