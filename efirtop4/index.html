@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Як побудувати сильну систему продажів | VENHER EDU</title>
-    <meta name="description" content="Жива лекція Ольги Венгерець: як побудувати сильну систему продажів та перестати втрачати кошти кожен день. 21 липня о 19:00 за Києвом.">
+    <meta name="description" content="Безкоштовний ефір Ольги Венгерець: як побудувати сильну систему продажів та перестати втрачати кошти кожен день.">
     <!-- Meta Pixel Code -->
     <script>
       !function(f,b,e,v,n,t,s)
@@ -769,6 +769,23 @@
         display: block;
       }
 
+      .form-error {
+        padding: 14px;
+        border-radius: 14px;
+        background: rgba(180, 28, 28, 0.1);
+        color: #8f1515;
+        font-weight: 800;
+      }
+
+      .form-error[hidden] {
+        display: none;
+      }
+
+      .form button:disabled {
+        cursor: wait;
+        opacity: 0.7;
+      }
+
       .modal {
         position: fixed;
         inset: 0;
@@ -1020,9 +1037,8 @@
           </div>
 
           <div class="hero-layout-form">
-            <div class="meta-row" aria-label="Дата і формат лекції">
-              <div class="meta-pill">вівторок, 21 липня</div>
-              <div class="meta-pill">19:00 за Києвом</div>
+            <div class="meta-row" aria-label="Дата ефіру">
+              <div class="meta-pill">Безкоштовний ефір <span data-efir-date>23 липня</span></div>
             </div>
 
             <button class="button js-open-modal" type="button">Забронювати місце та забрати бонус</button>
@@ -1192,7 +1208,7 @@
         <div class="shell">
           <div class="form-card cta-only">
             <div class="form-copy">
-              <div class="eyebrow">Жива лекція 21 липня о 19:00 за Києвом</div>
+              <div class="eyebrow">Безкоштовний ефір <span data-efir-date>23 липня</span></div>
               <h2>Забронюйте місце та заберіть бонус</h2>
               <button class="button js-open-modal" type="button">Забронювати місце та забрати бонус</button>
             </div>
@@ -1227,14 +1243,51 @@
           <div class="success">
             Готово. Зараз відкриємо бот з бонусом та посиланням на лекцію.
           </div>
+          <div class="form-error" role="alert" hidden>
+            Не вдалося завершити реєстрацію. Спробуйте ще раз
+          </div>
           <small>Після відправлення форми ви перейдете в бот.</small>
         </form>
       </div>
     </div>
 
     <script>
-      const botUrl = "https://telegram.me/Olga_Venher_bot?start=ZGw6MzM0NTU4";
+      const googleAppsScriptUrl = "[GOOGLE_APPS_SCRIPT_URL]";
+      const botUrl = "https://telegram.me/Olga_Venher_bot?start=ZGw6MzM1MTg5";
       const modal = document.querySelector("#registration-modal");
+
+      function getNextKyivDateLabel() {
+        const kyivParts = new Intl.DateTimeFormat("en-CA", {
+          timeZone: "Europe/Kyiv",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        }).formatToParts(new Date());
+        const value = Object.fromEntries(kyivParts.map((part) => [part.type, part.value]));
+        const nextDate = new Date(
+          Date.UTC(Number(value.year), Number(value.month) - 1, Number(value.day) + 1)
+        );
+        const months = [
+          "січня",
+          "лютого",
+          "березня",
+          "квітня",
+          "травня",
+          "червня",
+          "липня",
+          "серпня",
+          "вересня",
+          "жовтня",
+          "листопада",
+          "грудня",
+        ];
+        return `${nextDate.getUTCDate()} ${months[nextDate.getUTCMonth()]}`;
+      }
+
+      const nextEfirDate = getNextKyivDateLabel();
+      document.querySelectorAll("[data-efir-date]").forEach((element) => {
+        element.textContent = nextEfirDate;
+      });
 
       document.querySelectorAll(".js-open-modal").forEach((button) => {
         button.addEventListener("click", () => {
@@ -1259,23 +1312,56 @@
       });
 
       document.querySelectorAll(".js-form").forEach((form) => {
-        form.addEventListener("submit", (event) => {
+        form.addEventListener("submit", async (event) => {
           event.preventDefault();
-          const data = Object.fromEntries(new FormData(form).entries());
-          try {
-            const saved = JSON.parse(localStorage.getItem("venher-efir-registrations") || "[]");
-            saved.push({ ...data, createdAt: new Date().toISOString() });
-            localStorage.setItem("venher-efir-registrations", JSON.stringify(saved));
-          } catch (error) {
-            console.warn("Registration was not saved locally", error);
+
+          if (form.dataset.submitting === "true") {
+            return;
           }
-          form.classList.add("is-sent");
-          window.setTimeout(() => {
-            window.location.href = botUrl;
-          }, 350);
+
+          const submitButton = form.querySelector('button[type="submit"]');
+          const errorMessage = form.querySelector(".form-error");
+          const email = form.elements.email.value.trim();
+          const originalButtonText = submitButton.textContent;
+
+          form.dataset.submitting = "true";
+          submitButton.disabled = true;
+          submitButton.textContent = "Надсилаємо…";
+          errorMessage.hidden = true;
+          form.classList.remove("is-sent");
+
+          const urlParams = new URLSearchParams(window.location.search);
+          const formData = new FormData();
+          formData.append("email", email);
+          formData.append("page", window.location.href);
+          formData.append("utm_source", urlParams.get("utm_source") || "");
+          formData.append("utm_campaign", urlParams.get("utm_campaign") || "");
+          formData.append("utm_content", urlParams.get("utm_content") || "");
+
+          try {
+            if (googleAppsScriptUrl.includes("[GOOGLE_APPS_SCRIPT_URL]")) {
+              throw new Error("Google Apps Script URL is not configured");
+            }
+
+            await fetch(googleAppsScriptUrl, {
+              method: "POST",
+              mode: "no-cors",
+              body: formData,
+            });
+
+            form.classList.add("is-sent");
+            window.location.assign(botUrl);
+          } catch (error) {
+            console.error("Registration failed", error);
+            errorMessage.textContent = "Не вдалося завершити реєстрацію. Спробуйте ще раз";
+            errorMessage.hidden = false;
+            submitButton.textContent = originalButtonText;
+            submitButton.disabled = false;
+            delete form.dataset.submitting;
+          }
         });
       });
     </script>
   
 
-</body><div id="codex-browser-sidebar-comments-root" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483647;"></div></html>
+</body></html>
