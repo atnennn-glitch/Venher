@@ -2,6 +2,7 @@
 <html lang="uk"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="build-version" content="2026-07-22-1535">
     <title>Як побудувати сильну систему продажів | VENHER EDU</title>
     <meta name="description" content="Безкоштовний ефір Ольги Венгерець: як побудувати сильну систему продажів та перестати втрачати кошти кожен день.">
     <!-- Meta Pixel Code -->
@@ -185,6 +186,11 @@
         font-size: 12px;
         font-weight: 900;
         text-transform: uppercase;
+      }
+
+      [data-efir-date] {
+        display: inline-block;
+        margin-left: 0.35em;
       }
 
       .hero-layout-form {
@@ -769,18 +775,6 @@
         display: block;
       }
 
-      .form-error {
-        padding: 14px;
-        border-radius: 14px;
-        background: rgba(180, 28, 28, 0.1);
-        color: #8f1515;
-        font-weight: 800;
-      }
-
-      .form-error[hidden] {
-        display: none;
-      }
-
       .form button:disabled {
         cursor: wait;
         opacity: 0.7;
@@ -1038,7 +1032,7 @@
 
           <div class="hero-layout-form">
             <div class="meta-row" aria-label="Дата ефіру">
-              <div class="meta-pill">Безкоштовний ефір <span data-efir-date>23 липня</span></div>
+              <div class="meta-pill">Безкоштовний ефір<span data-efir-date>23 липня</span></div>
             </div>
 
             <button class="button js-open-modal" type="button">Забронювати місце та забрати бонус</button>
@@ -1208,7 +1202,7 @@
         <div class="shell">
           <div class="form-card cta-only">
             <div class="form-copy">
-              <div class="eyebrow">Безкоштовний ефір <span data-efir-date>23 липня</span></div>
+              <div class="eyebrow">Безкоштовний ефір<span data-efir-date>23 липня</span></div>
               <h2>Забронюйте місце та заберіть бонус</h2>
               <button class="button js-open-modal" type="button">Забронювати місце та забрати бонус</button>
             </div>
@@ -1243,16 +1237,14 @@
           <div class="success">
             Готово. Зараз відкриємо бот з бонусом та посиланням на лекцію.
           </div>
-          <div class="form-error" role="alert" hidden>
-            Не вдалося завершити реєстрацію. Спробуйте ще раз
-          </div>
           <small>Після відправлення форми ви перейдете в бот.</small>
         </form>
       </div>
     </div>
 
     <script>
-      const googleAppsScriptUrl = "[GOOGLE_APPS_SCRIPT_URL]";
+      const GOOGLE_APPS_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbxF1G-p5xchQclVqTzRrWJWPq_FwYWAVi14hk1JpPuJjoOGZNgtnj2G9vxzU3Az0_IfMg/exec";
       const botUrl = "https://telegram.me/Olga_Venher_bot?start=ZGw6MzM1MTg5";
       const modal = document.querySelector("#registration-modal");
 
@@ -1312,7 +1304,7 @@
       });
 
       document.querySelectorAll(".js-form").forEach((form) => {
-        form.addEventListener("submit", async (event) => {
+        form.addEventListener("submit", (event) => {
           event.preventDefault();
 
           if (form.dataset.submitting === "true") {
@@ -1320,14 +1312,11 @@
           }
 
           const submitButton = form.querySelector('button[type="submit"]');
-          const errorMessage = form.querySelector(".form-error");
           const email = form.elements.email.value.trim();
-          const originalButtonText = submitButton.textContent;
 
           form.dataset.submitting = "true";
           submitButton.disabled = true;
           submitButton.textContent = "Надсилаємо…";
-          errorMessage.hidden = true;
           form.classList.remove("is-sent");
 
           const urlParams = new URLSearchParams(window.location.search);
@@ -1338,27 +1327,17 @@
           formData.append("utm_campaign", urlParams.get("utm_campaign") || "");
           formData.append("utm_content", urlParams.get("utm_content") || "");
 
-          try {
-            if (googleAppsScriptUrl.includes("[GOOGLE_APPS_SCRIPT_URL]")) {
-              throw new Error("Google Apps Script URL is not configured");
-            }
+          fetch(GOOGLE_APPS_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            keepalive: true,
+            body: formData,
+          }).catch((error) => {
+            console.warn("Registration could not be sent to Google Sheets", error);
+          });
 
-            await fetch(googleAppsScriptUrl, {
-              method: "POST",
-              mode: "no-cors",
-              body: formData,
-            });
-
-            form.classList.add("is-sent");
-            window.location.assign(botUrl);
-          } catch (error) {
-            console.error("Registration failed", error);
-            errorMessage.textContent = "Не вдалося завершити реєстрацію. Спробуйте ще раз";
-            errorMessage.hidden = false;
-            submitButton.textContent = originalButtonText;
-            submitButton.disabled = false;
-            delete form.dataset.submitting;
-          }
+          form.classList.add("is-sent");
+          window.location.assign(botUrl);
         });
       });
     </script>
