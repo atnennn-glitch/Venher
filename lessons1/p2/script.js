@@ -32,15 +32,16 @@ playButton.addEventListener('click', () => {
   }
 
   iframe.src = `${VIDEO_URL}${separator}${playerParams.toString()}`;
-  iframe.title = 'Урок 1 — Заперечення «Я подумаю»';
+  iframe.title = document.title;
   iframe.allow = 'autoplay; fullscreen; picture-in-picture';
   iframe.allowFullscreen = true;
   iframe.referrerPolicy = 'strict-origin-when-cross-origin';
   videoFrame.append(iframe);
-  videoHint.textContent = 'Урок 1 · Ольга Венгерець';
+  const lessonLabel = document.querySelector('.kicker')?.textContent || 'Урок';
+  videoHint.textContent = `${lessonLabel} · Ольга Венгерець`;
 });
 
-consultationForm.addEventListener('submit', async (event) => {
+consultationForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
   const submitButton = consultationForm.querySelector('button[type="submit"]');
   const submitLabel = submitButton.querySelector('span:first-child');
@@ -86,6 +87,6 @@ consultationForm.addEventListener('submit', async (event) => {
     formError.hidden = false;
   } finally {
     submitButton.disabled = false;
-    submitLabel.textContent = 'Записатися на консультацію';
+    submitLabel.textContent = 'Отримати безкоштовну консультацію';
   }
 });

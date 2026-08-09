@@ -74,62 +74,39 @@
       </div>
       <div class="video-after">
         <p class="video-hint" id="videoHint" role="status">Натисніть, щоб розпочати урок</p>
-        <a class="scroll-arrow" href="#consultation" aria-label="Перейти до консультації">↓</a>
+        <a class="scroll-arrow" href="#bonus" aria-label="Перейти до бонусних матеріалів">↓</a>
       </div>
       <p class="consultation-announcement">
-        Для учнів практикуму<br>
-        1 консультація до 60 хвилин — <strong>безкоштовно</strong>
+        <strong>Бонус від Ольги</strong>
       </p>
     </section>
 
-    <section class="consultation shell" id="consultation">
+    <section class="consultation shell" id="bonus">
       <div class="consultation-offer">
-        <p class="section-label">Особиста робота з Ольгою</p>
-        <h2>Розберемо ваші<br><span>продажі разом</span></h2>
-        <p class="consultation-lead">Для учнів цього практикуму доступна одна безкоштовна особиста консультація з Ольгою тривалістю до 60 хвилин. Під час зустрічі Ольга розбере вашу ситуацію та систему, знайде слабкі місця у продажах і підкаже, що змінити вже зараз.</p>
+        <p class="section-label">Бонус від Ольги</p>
+        <h2>Те, що лежить<br><span>під 7 замками</span></h2>
+        <p class="consultation-lead">У мене є ще дещо, окрім уроків — те, що зазвичай лежить під сімома замками в моєму приватному архіві. Це моя особиста <strong>БАЗА</strong> — чистий концентрат корисних матеріалів та уроків із продажів.</p>
         <ul class="consultation-points">
-          <li><span>01</span> Аналіз вашої ситуації у продажах</li>
-          <li><span>02</span> Відповіді на особисті запитання</li>
-          <li><span>03</span> Чіткий план наступних дій</li>
+          <li><span>01</span> Інструменти, які мої клієнти та сейлзи використовують щодня</li>
+          <li><span>02</span> Матеріали, підібрані вручну саме під вашу нішу</li>
+          <li><span>03</span> Рішення, які закриють вашу конкретну дірку в продажах</li>
         </ul>
       </div>
 
-      <form class="consultation-form" id="consultationForm" action="/api/telegram" method="post">
+      <div class="consultation-form bonus-card">
         <div class="form-heading">
-          <span>Запис на особисту консультацію</span>
-          <span>1 раз · до 60 хв · безкоштовно</span>
+          <span>Ваша персональна БАЗА</span>
+          <span>Безкоштовно</span>
         </div>
-        <label>
-          <span>Нікнейм у Telegram</span>
-          <input type="text" name="telegram" autocomplete="off" placeholder="@username">
-        </label>
-        <label>
-          <span>Номер телефону</span>
-          <input type="tel" name="phone" autocomplete="tel" placeholder="+38 (___) ___-__-__" required>
-        </label>
-        <label>
-          <span>Ваша ніша</span>
-          <input type="text" name="niche" placeholder="У якій сфері ви працюєте?">
-        </label>
-        <label>
-          <span>З якими складнощами зіштовхуєтесь?</span>
-          <textarea name="difficulties" rows="3" placeholder="Коротко опишіть основні складнощі"></textarea>
-        </label>
-        <label class="honeypot" aria-hidden="true">
-          <span>Не заповнюйте це поле</span>
-          <input type="text" name="website" tabindex="-1" autocomplete="off">
-        </label>
-        <button class="primary-button" type="submit">
-          <span>Отримати безкоштовну консультацію</span>
+        <span class="bonus-badge">Приватний архів</span>
+        <h3>Я підберу матеріали особисто під вас</h3>
+        <p>Оскільки ви вже всередині моєї системи, я вручну підберу матеріали під вашу нішу, щоб вони закрили саме вашу дірку в продажах.</p>
+        <p class="bonus-instruction">Напишіть мені слово <strong>БАЗА</strong> в особисті:</p>
+        <a class="primary-button" href="https://t.me/m/qwAWRtCQMzg6" target="_blank" rel="noopener noreferrer">
+          <span>Отримати БАЗУ</span>
           <span class="button-arrow">↗</span>
-        </button>
-        <p class="form-note">Натискаючи кнопку, ви погоджуєтеся на обробку персональних даних.</p>
-        <p class="form-error" id="formError" role="alert" hidden></p>
-        <div class="form-success" id="formSuccess" role="status" hidden>
-          <strong>Заявку успішно оформлено!</strong>
-          <span>Ольга скоро зв’яжеться з вами :)</span>
-        </div>
-      </form>
+        </a>
+      </div>
     </section>
   </main>
 
