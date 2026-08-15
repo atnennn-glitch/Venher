@@ -1,0 +1,11 @@
+Завантажте всі 6 файлів у папку freemini репозиторію без вкладеної папки:
+
+index.html
+styles.css
+script.js
+olha-hero.jpg
+olha-speaker.jpg
+favicon.svg
+
+Сторінка розрахована на адресу:
+https://venher-edu.space/freemini
