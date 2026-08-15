@@ -1,0 +1,9 @@
+Створіть у папці freemini папку thanks та завантажте туди всі 4 файли:
+
+index.html
+styles.css
+script.js
+favicon.svg
+
+Адреса сторінки:
+https://venher-edu.space/freemini/thanks/
