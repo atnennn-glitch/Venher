@@ -1,0 +1,8 @@
+import type { Metadata } from "next";
+import "./globals.css";
+export const metadata: Metadata = {title:"Твій менеджер — довідкове бюро? | VENHER EDU",description:"Безкоштовний відеорозбір: як припинити зливати рекламний бюджет у переписках і побудувати систему продажів.",icons:{icon:"/favicon.svg"},openGraph:{title:"Твій менеджер — довідкове бюро?",description:"Як припинити зливати рекламний бюджет у переписках.",images:["/og.png"],type:"website"},twitter:{card:"summary_large_image",title:"Твій менеджер — довідкове бюро?",description:"Як припинити зливати рекламний бюджет у переписках.",images:["/og.png"]}};
+export default function RootLayout({children}:Readonly<{children:React.ReactNode}>){return <html lang="uk"><head>
+  <script dangerouslySetInnerHTML={{__html:`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1280398327139709');fbq('track','PageView');`}} />
+  <script src="https://customer.smartsender.eu/js/client/dl.min.js"></script>
+  <script dangerouslySetInnerHTML={{__html:`(function initSmartSender(){if(window.__ssdlReady)return;if(typeof ssDeepLink==='function'){window.__ssdlReady=true;ssDeepLink('deep-link','explainer',true,{});return}setTimeout(initSmartSender,100)})();`}} />
+</head><body><noscript><img height="1" width="1" style={{display:"none"}} src="https://www.facebook.com/tr?id=1280398327139709&ev=PageView&noscript=1" alt="" /></noscript>{children}</body></html>}
