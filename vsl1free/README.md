@@ -1,8 +1,8 @@
 # VENHER VSL
 
-index.html готовий для GitHub Pages і передає всі query-параметри на робочий лендинг без змін.
+index.html — повністю автономний лендинг для розміщення за адресою venher-edu.space/vsl1free.
 
-Робочий сайт: https://venher-vsl-sales.atnennn.chatgpt.site/
+Завантажте вміст ZIP у папку vsl1free на вашому хостингу. Редиректів на сторонні домени немає.
 
 ## Meta Ads URL Parameters
 
