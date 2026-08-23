@@ -56,7 +56,7 @@ button.video{width:100%;color:#fff;font:inherit;text-align:left;cursor:pointer}.
   modal.addEventListener('click',e=>{if(e.target===modal)close()}); document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
   const check=()=>floating.classList.toggle('visible',hero.getBoundingClientRect().bottom<0); addEventListener('scroll',check,{passive:true});check();
   let ready=false;function init(){if(ready)return;if(typeof ssDeepLink==='function'){ssDeepLink('deep-link','explainer',true,{});ready=true;return}setTimeout(init,100)}init();
-  document.getElementById('leadForm').addEventListener('submit',function(e){e.preventDefault();const url=new URL(location.href);url.searchParams.set('email',email.value.trim());history.replaceState({},'',url);document.getElementById('telegramLink').click()});
+  document.getElementById('leadForm').addEventListener('submit',function(e){e.preventDefault();const url=new URL(location.href);url.searchParams.set('email',email.value.trim());history.replaceState({},'',url);if(typeof fbq==='function')fbq('track','Lead');document.getElementById('telegramLink').click()});
 })();
 </script>
 </body>
