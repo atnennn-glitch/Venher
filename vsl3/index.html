@@ -1,1 +1,127 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Як продавати свою експертність через діагностики або переписки. Безкоштовне відео Ольги Венгерець.">
+  <title>Як продавати свою експертність | VENHER · EDU</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
 
+  <!-- Meta Pixel Code -->
+  <script src="assets/pixel.js"></script>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1280398327139709&amp;ev=PageView&amp;noscript=1"
+  alt=""></noscript>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="VENHER EDU — на початок сторінки">
+      <span class="brand-dot"></span>
+      <span>VENHER · EDU</span>
+    </a>
+    <div class="header-meta">
+      <span class="live-dot"></span>
+      Бонусне відео доступне
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-grid">
+        <div>
+          <p class="kicker">Безкоштовний відеорозбір для експертів</p>
+          <h1>Як продавати свою експертність <em>через діагностики або переписки</em></h1>
+        </div>
+        <div class="hero-copy">
+          <p>Курси, консультації чи менторство — розберися, як перетворювати вхідні заявки на оплати. Кваліфікація клієнта, структура діагностичної зустрічі та екологічне закриття в Direct — без тиску й нескінченних безкоштовних порад.</p>
+          <div class="duration"><span class="play-mini"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m8 4 12 8-12 8Z" fill="currentColor"/></svg></span> Для експертів, коучів та онлайн-шкіл</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section shell" aria-label="Відеоурок для експертів">
+      <div class="video-frame" id="videoFrame" data-video-url="https://www.youtube.com/embed/Lg-HbddYn_8">
+        <div class="video-grid-bg" aria-hidden="true"></div>
+        <div class="video-poster">
+          <span class="poster-overline">Системні продажі для експертів</span>
+          <strong>Через діагностики<br>або переписки</strong>
+        </div>
+        <button class="play-button" id="playButton" type="button" aria-label="Відтворити бонусне відео">
+          <span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m8 4 12 8-12 8Z" fill="currentColor"/></svg></span>
+        </button>
+        <div class="video-bottom">
+          <span>Ольга Венгерець</span>
+          <span>Бонус</span>
+        </div>
+      </div>
+      <div class="video-after">
+        <p class="video-hint" id="videoHint" role="status">Натисніть, щоб переглянути нове відео</p>
+        <a class="scroll-arrow" href="#consultation" aria-label="Перейти до консультації"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false" fill="none"><path d="M16 5v22M6 17l10 10 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <p class="consultation-announcement">
+        Ваша можливість — особистий стратегічний розбір<br>
+        45–60 хвилин · <strong>безкоштовно</strong> · 2 місця на тиждень
+      </p>
+    </section>
+
+    <section class="consultation shell" id="consultation">
+      <div class="consultation-offer">
+        <p class="section-label">Найважливіший крок до покращень</p>
+        <h2>Проведемо стратегічний<br><span>розбір ваших продажів</span></h2>
+        <p class="consultation-lead">За 45–60 хвилин особистої онлайн-зустрічі ми розберемо ваші питання та воронку продажів.<br><br>Формат підійде експертам, коучам, консультантам та засновникам онлайн-шкіл, які продають курси, консультації або менторство й хочуть системно працювати з вхідними заявками.</p>
+        <ul class="consultation-points">
+          <li><span>01</span> Знайдемо конкретні точки росту та блоки вас і команди</li>
+          <li><span>02</span> Сформуємо чіткі кроки до прогнозованої системи продажів</li>
+        </ul>
+      </div>
+
+      <form class="consultation-form" id="consultationForm" action="/api/telegram" method="post">
+        <label>
+          <span>Нікнейм у Telegram</span>
+          <input type="text" name="telegram" autocomplete="off" placeholder="@username">
+        </label>
+        <label>
+          <span>Номер телефону</span>
+          <input type="tel" name="phone" autocomplete="tel" placeholder="+38 (___) ___-__-__" required>
+        </label>
+        <label>
+          <span>Ваша ніша</span>
+          <input type="text" name="niche" placeholder="У якій сфері ви працюєте?">
+        </label>
+        <label>
+          <span>З якими складнощами зіштовхуєтесь?</span>
+          <textarea name="difficulties" rows="3" placeholder="Коротко опишіть основні складнощі"></textarea>
+        </label>
+        <label class="honeypot" aria-hidden="true">
+          <span>Не заповнюйте це поле</span>
+          <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </label>
+        <button class="primary-button" type="submit">
+          <span>Подати заявку на розбір</span>
+          <span class="button-arrow"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false" fill="none"><path d="M7 25 25 7M7 7h18v18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <p class="form-note">Я особисто проводжу до двох розборів на тиждень. Натискаючи кнопку, ви погоджуєтеся на обробку персональних даних. <a href="https://drive.google.com/file/d/1FH4BDTLObqTtORxWi4A2HQl5RE-DO0Xh/view?usp=sharing" target="_blank" rel="noopener noreferrer">Політика конфіденційності</a>.</p>
+        <p class="form-error" id="formError" role="alert" hidden></p>
+        <div class="form-success" id="formSuccess" role="status" hidden>
+          <strong>Заявку на розбір успішно оформлено!</strong>
+          <span>Ольга скоро зв’яжеться з вами :)</span>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer shell">
+    <div class="brand footer-brand"><span class="brand-dot"></span><span>VENHER · EDU</span></div>
+    <p>Продажі — це система.<br>Нею можна керувати.</p>
+    <span>© 2026</span><div class="footer-privacy"><a href="https://drive.google.com/file/d/1FH4BDTLObqTtORxWi4A2HQl5RE-DO0Xh/view?usp=sharing" target="_blank" rel="noopener noreferrer">Політика конфіденційності</a></div>
+  </footer>
+
+  <script src="assets/lesson.js"></script>
+</body>
+</html>
