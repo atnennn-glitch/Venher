@@ -16,7 +16,7 @@ button.video{width:100%;color:#fff;font:inherit;text-align:left;cursor:pointer}.
 .modalBackdrop[hidden]{display:none}
 .bigNumber b{font-size:clamp(52px,6vw,84px)}.hero h1{line-height:1.02}.modal>small{font-size:12px}.modal label{font-size:12px}:focus-visible{outline:2px solid var(--lime);outline-offset:4px}@media(max-width:800px){.hero h1{font-size:12.2vw}.heroCopy>p{font-size:18px}.button{min-width:0;max-width:100%}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}</style>
   <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1280398327139709');fbq('track','PageView');</script>
-  <script src="https://customer.smartsender.eu/js/client/dl.min.js"></script>
+  
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1280398327139709&amp;ev=PageView&amp;noscript=1" alt=""></noscript>
@@ -55,8 +55,8 @@ button.video{width:100%;color:#fff;font:inherit;text-align:left;cursor:pointer}.
   floating.addEventListener('click',open); document.getElementById('modalClose').addEventListener('click',close);
   modal.addEventListener('click',e=>{if(e.target===modal)close()}); document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
   const check=()=>floating.classList.toggle('visible',hero.getBoundingClientRect().bottom<0); addEventListener('scroll',check,{passive:true});check();
-  let ready=false;function init(){if(ready)return;if(typeof ssDeepLink==='function'){ssDeepLink('deep-link','explainer',true,{});ready=true;return}setTimeout(init,100)}init();
-  document.getElementById('leadForm').addEventListener('submit',function(e){e.preventDefault();const url=new URL(location.href);url.searchParams.set('email',email.value.trim());history.replaceState({},'',url);if(typeof fbq==='function')fbq('track','Lead');document.getElementById('telegramLink').click()});
+  
+  document.getElementById('leadForm').addEventListener('submit',function(e){e.preventDefault();const url=new URL(location.href);url.searchParams.set('email',email.value.trim());history.replaceState({},'',url);if(typeof fbq==='function')fbq('track','Lead');window.location.assign('https://telegram.me/Olga_Venher_bot?start=ZGw6MzM5Njky')});
 })();
 </script>
 </body>
