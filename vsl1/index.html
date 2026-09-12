@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Нове відео VENHER · EDU для власників бізнесу — де губляться продажі в переписках і як підвищити конверсію.">
-  <title>Де губляться продажі в переписках | VENHER · EDU</title>
+  <meta name="description" content="Безкоштовний відеорозбір Ольги Венгерець: системні продажі в переписках та анкета на особистий розбір.">
+  <title>Як перетворити звернення на продажі | VENHER · EDU</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -160,7 +160,35 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
   }
-  </style>
+  
+  h1 {font-size:clamp(44px,5.2vw,76px);line-height:1.02;letter-spacing:-.055em}
+  .video-poster {right:30%;left:6%}
+  .video-poster strong {font-size:clamp(32px,5vw,70px);line-height:1.04}
+  .button-arrow {flex-shrink:0}
+  .button-arrow svg,.scroll-arrow svg {width:28px;height:28px;display:block}
+  .play-button svg {width:40px;height:40px;display:block;margin:auto}
+  .play-mini svg {width:14px;height:14px;display:block}
+  .form-note {font-size:12px}
+  .form-note a {color:#333;text-underline-offset:3px}
+  .footer-privacy {grid-column:1/-1;margin-top:24px;font-size:14px}
+  .footer-privacy a {color:var(--muted);text-underline-offset:4px}
+  :focus-visible {outline:2px solid var(--orange);outline-offset:4px}
+  @media(max-width:560px){h1{font-size:10.8vw;line-height:1.06}.video-poster strong{font-size:6.3vw}.play-button svg{width:27px;height:27px}.poster-overline{line-height:1.5}.primary-button{gap:12px;font-size:12px;text-align:left}}
+  
+.site-header{height:64px;padding:0 32px}.site-header .brand{font-size:22px}
+.experiment{padding-top:26px;padding-bottom:38px}.compact-heading{margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.compact-heading h1{font-size:clamp(24px,2.7vw,38px);line-height:1.14;letter-spacing:-.045em;margin:0}
+.early-cta{display:flex;align-items:center;gap:10px;color:var(--orange);font-size:14px;white-space:nowrap;text-underline-offset:4px}
+.experiment-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(330px,1fr);gap:26px;align-items:start}.experiment-grid>*{min-width:0}
+.direct-player{aspect-ratio:16/9;background:#000;position:relative;border:1px solid var(--line)}.direct-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.lesson-caption{font-size:14px;color:var(--muted);margin:14px 0}.lesson-summary{font-size:17px;line-height:1.5;color:#d5d5d0;max-width:650px}
+.form-panel{scroll-margin-top:18px}.form-panel .consultation-form{padding:24px}.consultation-form h2{font-size:28px;line-height:1.06;letter-spacing:-.04em;margin:0 0 10px}.form-intro{font-size:14px;line-height:1.4;margin:0 0 18px;color:#555}
+.form-panel label{margin-bottom:12px}.form-panel label>span{font-size:12px;margin-bottom:2px}.form-panel input,.form-panel textarea{padding:8px 0;font-size:16px}.form-panel .primary-button{font-size:12px;padding-left:16px;gap:8px}.form-panel .button-arrow{width:40px;height:40px}.form-panel .form-note{font-size:12px;line-height:1.45}.form-panel .form-success{padding:26px}.form-panel .form-success strong{font-size:32px}
+.site-footer{padding:24px 0}
+@media(max-width:1000px){.compact-heading{align-items:flex-start;flex-direction:column;gap:14px}.experiment-grid{grid-template-columns:minmax(0,1.3fr) minmax(310px,1fr)}}
+@media(max-width:760px){.site-header{height:56px;padding:0 16px}.experiment{padding-top:18px}.compact-heading{margin-bottom:18px}.compact-heading h1{font-size:28px;line-height:1.12}.early-cta{white-space:normal;font-size:14px;border:1px solid var(--orange);padding:11px 14px;text-decoration:none;width:100%;justify-content:space-between}.experiment-grid{grid-template-columns:1fr;gap:12px}.lesson-summary{display:none}.lesson-caption{margin:10px 0}.form-panel .consultation-form{padding:22px}.header-meta{display:none}}
+.lesson-panel{scroll-margin-top:20px}.breakdown-details{display:grid;grid-template-columns:1fr 1.45fr;gap:60px;border-top:1px solid var(--line);margin-top:48px;padding:48px 0 20px}.breakdown-details h2{font-size:clamp(32px,4vw,52px);line-height:1.06;letter-spacing:-.045em;margin:0}.breakdown-details em{color:var(--orange)}.breakdown-details p:not(.section-label){font-size:17px;line-height:1.65;color:#c8c8c3;margin:0 0 22px}.breakdown-details li{font-size:16px;line-height:1.5}@media(max-width:760px){.breakdown-details{grid-template-columns:1fr;gap:24px;margin-top:32px;padding-top:32px}}
+</style>
 
   <!-- Meta Pixel Code -->
   <script>
@@ -194,57 +222,13 @@
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero shell">
-      <div class="hero-grid">
-        <div>
-          <p class="kicker">Чекап ваших продажів</p>
-          <h1>Заявка є —<br><em>де губиться<br>продаж?</em></h1>
-        </div>
-        <div class="hero-copy">
-          <p>У відео розберемо, чому ви або менеджер часто стаєте «довідковим бюро», де втрачаєте гроші після отримання заявки, які помилки знижують конверсію та як перетворити хаотичні переписки на прогнозовану систему продажів.</p>
-          <div class="duration"><span class="play-mini">▶</span> Нове відео для власників бізнесу</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="video-section shell" aria-label="Бонусне відео для власників бізнесу">
-      <div class="video-frame" id="videoFrame" data-video-url="https://www.youtube.com/embed/Fd0vgrYR3YM">
-        <div class="video-grid-bg" aria-hidden="true"></div>
-        <div class="video-poster">
-          <span class="poster-overline">Продажі в переписках</span>
-          <strong>Менеджер продає —<br>чи лише консультує?</strong>
-        </div>
-        <button class="play-button" id="playButton" type="button" aria-label="Відтворити бонусне відео">
-          <span>▶</span>
-        </button>
-        <div class="video-bottom">
-          <span>Ольга Венгерець</span>
-          <span>Бонус</span>
-        </div>
-      </div>
-      <div class="video-after">
-        <p class="video-hint" id="videoHint" role="status">Натисніть, щоб переглянути нове відео</p>
-        <a class="scroll-arrow" href="#consultation" aria-label="Перейти до консультації">↓</a>
-      </div>
-      <p class="consultation-announcement">
-        Ваша можливість — особистий стратегічний розбір<br>
-        45–60 хвилин · <strong>безкоштовно</strong> · 2 місця на тиждень
-      </p>
-    </section>
-
-    <section class="consultation shell" id="consultation">
-      <div class="consultation-offer">
-        <p class="section-label">Найважливіший крок до покращень</p>
-        <h2>Проведемо стратегічний<br><span>розбір ваших продажів</span></h2>
-        <p class="consultation-lead">За 45–60 хвилин особистої онлайн-зустрічі ми розберемо ваші питання та воронку продажів.<br><br>Формат підійде власникам діючого бізнесу, які продають самі або мають менеджерів й готові масштабуватися за рахунок збільшення продажів.</p>
-        <ul class="consultation-points">
-          <li><span>01</span> Знайдемо конкретні точки росту та блоки вас і команди</li>
-          <li><span>02</span> Сформуємо чіткі кроки до прогнозованої системи продажів</li>
-        </ul>
-      </div>
-
-      <form class="consultation-form" id="consultationForm" action="/api/telegram" method="post">
+  <main id="top" class="shell experiment">
+<div class="compact-heading"><h1>Як перетворити звернення <em>на продажі</em></h1><a class="early-cta" href="#video">Переглянути відео <svg width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 5v22M6 17l10 10 10-10" stroke="currentColor" stroke-width="2"/></svg></a></div>
+<div class="experiment-grid">
+<section id="video" class="lesson-panel" aria-label="Відеоурок"><div class="direct-player"><iframe src="https://www.youtube.com/embed/Fd0vgrYR3YM?playsinline=1&amp;rel=0" title="Де губляться продажі в переписках — Ольга Венгерець" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<p class="lesson-caption">Ольга Венгерець · Безкоштовний відеорозбір</p>
+<p class="lesson-summary">Де втрачаються клієнти після заявки та як побудувати системні продажі в переписках.</p>
+</section><section id="consultation" class="form-panel" aria-label="Анкета на розбір"><form class="consultation-form" id="consultationForm" action="/api/telegram" method="post"><h2>Безкоштовний розбір вашої ситуації</h2><p class="form-intro">45–60 хвилин · 2 місця на тиждень</p>
         <label>
           <span>Нікнейм у Telegram</span>
           <input type="text" name="telegram" autocomplete="off" placeholder="@username">
@@ -259,7 +243,7 @@
         </label>
         <label>
           <span>З якими складнощами зіштовхуєтесь?</span>
-          <textarea name="difficulties" rows="3" placeholder="Коротко опишіть основні складнощі"></textarea>
+          <textarea name="difficulties" rows="2" placeholder="Коротко опишіть основні складнощі"></textarea>
         </label>
         <label class="honeypot" aria-hidden="true">
           <span>Не заповнюйте це поле</span>
@@ -267,68 +251,26 @@
         </label>
         <button class="primary-button" type="submit">
           <span>Подати заявку на розбір</span>
-          <span class="button-arrow">↗</span>
+          <span class="button-arrow"><svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" focusable="false" fill="none"><path d="M7 25 25 7M7 7h18v18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </button>
-        <p class="form-note">Я особисто проводжу до двох розборів на тиждень. Натискаючи кнопку, ви погоджуєтеся на обробку персональних даних.</p>
+        <p class="form-note">Я особисто проводжу до двох розборів на тиждень. Натискаючи кнопку, ви погоджуєтеся на обробку персональних даних. <a href="https://drive.google.com/file/d/1FH4BDTLObqTtORxWi4A2HQl5RE-DO0Xh/view?usp=sharing" target="_blank" rel="noopener noreferrer">Політика конфіденційності</a>.</p>
         <p class="form-error" id="formError" role="alert" hidden></p>
         <div class="form-success" id="formSuccess" role="status" hidden>
           <strong>Заявку на розбір успішно оформлено!</strong>
           <span>Ольга скоро зв’яжеться з вами :)</span>
         </div>
-      </form>
-    </section>
-  </main>
+      </form></section></div><section class="breakdown-details" aria-labelledby="breakdown-title"><div><p class="section-label">Особиста онлайн-зустріч з Ольгою</p><h2 id="breakdown-title">Що буде <em>на розборі</em></h2></div><div><p>За 45–60 хвилин ми розберемо вашу ситуацію, питання та воронку продажів.</p><p>Формат підійде власникам діючого бізнесу, які продають самі або мають менеджерів і хочуть збільшити продажі.</p><ul class="consultation-points"><li><span>01</span> Розглянемо, як ви працюєте зі зверненнями та на яких етапах втрачаєте клієнтів</li><li><span>02</span> Знайдемо конкретні точки росту й перешкоди у вашій роботі та роботі команди</li><li><span>03</span> Сформуємо чіткі наступні кроки до прогнозованої системи продажів</li></ul></div></section></main>
 
   <footer class="site-footer shell">
     <div class="brand footer-brand"><span class="brand-dot"></span><span>VENHER · EDU</span></div>
     <p>Продажі — це система.<br>Нею можна керувати.</p>
-    <span>© 2026</span>
+    <span>© 2026</span><div class="footer-privacy"><a href="https://drive.google.com/file/d/1FH4BDTLObqTtORxWi4A2HQl5RE-DO0Xh/view?usp=sharing" target="_blank" rel="noopener noreferrer">Політика конфіденційності</a></div>
   </footer>
 
   <script>
-  const videoFrame = document.querySelector('#videoFrame');
-  const playButton = document.querySelector('#playButton');
-  const videoHint = document.querySelector('#videoHint');
   const consultationForm = document.querySelector('#consultationForm');
   const formSuccess = document.querySelector('#formSuccess');
   const formError = document.querySelector('#formError');
-  
-  // Вставте сюди embed-посилання YouTube або Vimeo, наприклад:
-  // https://www.youtube.com/embed/VIDEO_ID
-  // https://player.vimeo.com/video/VIDEO_ID
-  const VIDEO_URL = videoFrame.dataset.videoUrl.trim();
-  
-  playButton.addEventListener('click', () => {
-    if (!VIDEO_URL) {
-      videoHint.textContent = 'Відео готове до підключення — додайте посилання у data-video-url в index.html';
-      videoHint.classList.add('is-notice');
-      return;
-    }
-  
-    const iframe = document.createElement('iframe');
-    const separator = VIDEO_URL.includes('?') ? '&' : '?';
-    const playerParams = new URLSearchParams({
-      autoplay: '1',
-      playsinline: '1',
-      rel: '0'
-    });
-  
-    // YouTube використовує origin для ідентифікації сайту з вбудованим плеєром.
-    // Для локального file:// origin не існує, тому перевіряти відео потрібно через HTTP/HTTPS.
-    if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
-      playerParams.set('origin', window.location.origin);
-    }
-  
-    iframe.src = `${VIDEO_URL}${separator}${playerParams.toString()}`;
-    iframe.title = document.title;
-    iframe.allow = 'autoplay; fullscreen; picture-in-picture';
-    iframe.allowFullscreen = true;
-    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-    videoFrame.append(iframe);
-    const lessonLabel = document.querySelector('.kicker')?.textContent || 'Урок';
-    videoHint.textContent = `${lessonLabel} · Ольга Венгерець`;
-  });
-  
   consultationForm?.addEventListener('submit', async (event) => {
     event.preventDefault();
     const submitButton = consultationForm.querySelector('button[type="submit"]');
@@ -375,7 +317,7 @@
       formError.hidden = false;
     } finally {
       submitButton.disabled = false;
-      submitLabel.textContent = 'Отримати безкоштовну консультацію';
+      submitLabel.textContent = 'Подати заявку на розбір';
     }
   });
   </script>
