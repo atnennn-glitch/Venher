@@ -28,3 +28,4 @@
 .float-cta span{margin:0;background:#fff;color:#148c42}
 @media(max-width:700px){.quote-copy blockquote p{font-size:15px}.quote-copy blockquote p:first-child{font-size:25px}.companies{padding:70px 0}.companies-head{display:block;margin-bottom:30px}.companies-head .kicker{padding-top:0;margin-bottom:17px}.companies-head h2{font-size:clamp(30px,8vw,43px)}.company-logo{width:170px;height:94px;border-radius:16px}.company-logo img{inset:5px;width:calc(100% - 10px);height:calc(100% - 10px)}.float-cta{left:18px;right:18px;bottom:18px;justify-content:space-between;padding:10px 10px 10px 20px;border-radius:999px;color:#fff}.cta span,.float-cta span{width:38px;height:38px;font-size:22px}}
 @media(prefers-reduced-motion:reduce){.logo-track{animation-play-state:paused}}
+.credentials span{display:flex;align-items:center;justify-content:center;text-align:center}
