@@ -1,0 +1,32 @@
+.variant-two .bonus-image img{width:100%;height:100%;object-fit:cover}
+.variant-two .brand-marquee{width:100%;padding:76px 0 70px;overflow:hidden;background:#080b09}
+.variant-two .brand-marquee-heading{display:grid;grid-template-columns:.62fr 1.38fr;gap:40px;align-items:end;width:min(1120px,calc(100% - 64px));margin:0 auto 42px}
+.variant-two .brand-marquee-heading .eyebrow{margin:0}
+.variant-two .brand-marquee-heading h2{font-size:clamp(38px,5.1vw,70px);line-height:.98;text-transform:none}
+.variant-two .brand-marquee-row{display:flex;width:100%;overflow:hidden;padding:6px 0;mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.variant-two .brand-marquee-track{display:flex;width:max-content;animation:brand-marquee-left 34s linear infinite;will-change:transform}
+.variant-two .brand-marquee-row.reverse .brand-marquee-track{animation-direction:reverse;animation-duration:39s}
+.variant-two .brand-marquee-group{display:flex;gap:12px;padding-right:12px}
+.variant-two .brand-logo-card{width:245px;height:128px;padding:18px;display:grid;place-items:center;flex:none;overflow:hidden;border:1px solid rgba(255,255,255,.15);border-radius:20px;background:#fff}
+.variant-two .brand-logo-card img{width:100%;height:100%;display:block;object-fit:contain;filter:grayscale(1);transition:filter .25s}
+.variant-two .brand-logo-card:hover img{filter:grayscale(0)}
+.variant-two .brand-logo-card[data-brand="ZEO Alliance"] img{transform:scale(1.6)}
+.variant-two .brand-logo-card[data-brand="Fractal"] img{transform:scale(.82)}
+.variant-two .brand-logo-card[data-brand="OKKO"] img{transform:scale(.76)}
+.variant-two .brand-logo-card[data-brand="Vitael"] img{transform:scale(.8)}
+.variant-two .brand-logo-card[data-brand="Deeply"] img{object-position:center;transform:scale(1.72) translateY(-7%);transform-origin:center}
+.variant-two .brand-logo-card[data-brand="ПриватБанк"] img{transform:scale(1.35)}
+.variant-two .cases-hidden>.wrap>.student-results-title,
+.variant-two .cases-hidden>.wrap>.case-scroll-controls,
+.variant-two .cases-hidden>.wrap>.solo-case-grid,
+.variant-two .cases-hidden>.wrap>.holding-case-spotlight{display:none}
+.variant-two .cases-hidden{padding-top:0}
+.variant-two .cases-hidden .feedback-wall{margin-top:0}
+@keyframes brand-marquee-left{to{transform:translateX(calc(-50% - 6px))}}
+@media(max-width:700px){
+  .variant-two .brand-marquee{padding:50px 0 46px}
+  .variant-two .brand-marquee-heading{grid-template-columns:1fr;gap:16px;width:calc(100% - 40px);margin-bottom:30px}
+  .variant-two .brand-marquee-heading h2{font-size:clamp(34px,10.5vw,48px)}
+  .variant-two .brand-logo-card{width:170px;height:94px;padding:12px;border-radius:16px}
+}
+@media(prefers-reduced-motion:reduce){.variant-two .brand-marquee-track{animation-play-state:paused}}
