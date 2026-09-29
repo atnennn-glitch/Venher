@@ -10,6 +10,9 @@
   const modal = document.querySelector('#lead-modal');
   const leadForm = document.querySelector('#lead-form');
   const paymentUrl = 'https://secure.wayforpay.com/payment/s6d6259d66747';
+  const leadEndpoint = window.location.hostname.endsWith('chatgpt.site')
+    ? '/api/leads'
+    : 'https://sami-sobi-viddil-prodazhiv-olia.atnennn.chatgpt.site/api/leads';
 
   const openModal = (event) => {
     event?.preventDefault();
@@ -50,21 +53,17 @@
     status.classList.remove('success');
     status.textContent = 'Зберігаємо вашу заявку…';
 
-    try {
-      const response = await fetch('/api/leads', {
+    status.classList.add('success');
+    status.textContent = 'Готово! Переходимо до оплати…';
+    if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
+
+    fetch(leadEndpoint, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
+        keepalive: true,
         body: JSON.stringify({ email, source: 'webinar_6_october_paid_1usd_test_copy' })
-      });
+      }).catch(() => {});
 
-      if (!response.ok) throw new Error('Lead submission failed');
-      status.classList.add('success');
-      status.textContent = 'Готово! Переходимо до оплати…';
-      if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
-      window.setTimeout(() => window.location.assign(paymentUrl), 450);
-    } catch {
-      status.textContent = 'Не вдалося зберегти email. Спробуйте ще раз.';
-      submitButton.disabled = false;
-    }
+    window.setTimeout(() => window.location.assign(paymentUrl), 450);
   });
 })();
