@@ -63,6 +63,9 @@
   const modal = document.querySelector('#lead-modal');
   const leadForm = document.querySelector('#lead-form');
   const telegramUrl = 'https://telegram.me/Olga_Venher_bot?start=ZGw6MzQxODY0';
+  const leadEndpoint = window.location.hostname.endsWith('chatgpt.site')
+    ? '/api/leads'
+    : 'https://sami-sobi-viddil-prodazhiv-olia.atnennn.chatgpt.site/api/leads';
 
   const openModal = (event) => {
     event?.preventDefault();
@@ -103,21 +106,17 @@
     status.classList.remove('success');
     status.textContent = 'Зберігаємо вашу заявку…';
 
-    try {
-      const response = await fetch('/api/leads', {
+    status.classList.add('success');
+    status.textContent = 'Готово! Переходимо в Telegram…';
+    if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
+
+    fetch(leadEndpoint, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
+        keepalive: true,
         body: JSON.stringify({ email, source: 'webinar_6_october' })
-      });
+      }).catch(() => {});
 
-      if (!response.ok) throw new Error('Lead submission failed');
-      status.classList.add('success');
-      status.textContent = 'Готово! Переходимо в Telegram…';
-      if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
-      window.setTimeout(() => window.location.assign(telegramUrl), 450);
-    } catch {
-      status.textContent = 'Не вдалося зберегти email. Спробуйте ще раз.';
-      submitButton.disabled = false;
-    }
+    window.setTimeout(() => window.location.assign(telegramUrl), 450);
   });
 })();
