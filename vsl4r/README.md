@@ -1,13 +1,18 @@
 # VSL4R
 
-Готова статична сторінка для GitHub Pages.
+Готова статична сторінка для GitHub Pages. Стилі, логотип і код запуску Meta Pixel вбудовано в index.html: оформлення не залежить від шляху до папки assets.
+Відео завантажується з YouTube, шрифт — з Google Fonts (із запасним системним шрифтом), а кнопка відкриває Telegram.
 
 ## Структура
 
 - `index.html` — сторінка;
-- `assets/css/styles.css` — стилі;
-- `assets/images/logo.png` — логотип;
-- `assets/js/tracking.js` — Meta Pixel;
+- `assets/css/styles.css` — окрема копія стилів;
+- `assets/images/logo.png` — окрема копія логотипа;
+- `assets/js/tracking.js` — окрема копія коду Meta Pixel;
 - `.nojekyll` — вимикає обробку Jekyll.
 
-Завантажте весь вміст цієї папки в корінь репозиторію. У GitHub відкрийте **Settings → Pages**, виберіть **Deploy from a branch**, гілку `main` і папку `/ (root)`.
+Для адреси venher-edu.space/vsl4r/ завантажте index.html і папку assets у папку vsl4r чинного репозиторію. Не замінюйте головний index.html у корені чинного сайту.
+
+Для окремого нового репозиторію завантажте вміст архіву в його корінь і увімкніть GitHub Pages для відповідної гілки.
+
+Папка assets містить копії для редагування. Зміни тільки в цих копіях не змінюють сторінку: поточні стилі та код також потрібно оновити у вбудованих блоках index.html.
