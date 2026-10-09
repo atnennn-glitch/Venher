@@ -1,4 +1,23 @@
 (() => {
+  const kyivDateParts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Kyiv',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).formatToParts(new Date()).reduce((parts, part) => {
+    if (part.type !== 'literal') parts[part.type] = Number(part.value);
+    return parts;
+  }, {});
+  const eventDate = new Date(Date.UTC(kyivDateParts.year, kyivDateParts.month - 1, kyivDateParts.day + 1));
+  const eventDateLabel = new Intl.DateTimeFormat('uk-UA', {
+    day: 'numeric',
+    month: 'long',
+    timeZone: 'UTC'
+  }).format(eventDate);
+  document.querySelectorAll('[data-event-date]').forEach((node) => {
+    node.textContent = eventDateLabel;
+  });
+
   const timer = document.querySelector('[data-countdown]');
   const storageKey = 'venher-webinar-countdown-end';
   const storageVersionKey = 'venher-webinar-countdown-version';
@@ -62,7 +81,7 @@
 
   const modal = document.querySelector('#lead-modal');
   const leadForm = document.querySelector('#lead-form');
-  const telegramUrl = 'https://telegram.me/Olga_Venher_bot?start=ZGw6MzQxODY0';
+  const telegramUrl = 'https://telegram.me/Olga_Venher_bot?start=ZGw6MzQzMTE1';
   const leadEndpoint = window.location.hostname.endsWith('chatgpt.site')
     ? '/api/leads'
     : 'https://sami-sobi-viddil-prodazhiv-olia.atnennn.chatgpt.site/api/leads';
