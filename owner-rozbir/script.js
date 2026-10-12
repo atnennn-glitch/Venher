@@ -1,11 +1,12 @@
-const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+document.documentElement.classList.add('js');
+const observer = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => entries.forEach((entry) => {
   if (entry.isIntersecting) {
     entry.target.classList.add('visible');
     observer.unobserve(entry.target);
   }
-}), { threshold: 0.12 });
+}), { threshold: 0.12 }) : null;
 
-document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+document.querySelectorAll('.reveal').forEach((el) => observer ? observer.observe(el) : el.classList.add('visible'));
 
 document.querySelectorAll('details').forEach((detail) => detail.addEventListener('toggle', () => {
   if (detail.open) document.querySelectorAll('details[open]').forEach((other) => {
@@ -24,6 +25,7 @@ document.querySelector('[data-case-next]')?.addEventListener('click', () => case
 const floating = document.querySelector('.floating');
 const problem = document.querySelector('#problem');
 const updateFloating = () => {
+  if (!problem) return;
   const showAfter = problem.offsetTop + Math.min(problem.offsetHeight * 0.45, 420);
   floating.classList.toggle('is-visible', window.scrollY > showAfter);
 };
