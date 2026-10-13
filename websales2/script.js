@@ -12,10 +12,6 @@ function showError(element, message) {
   element.hidden = !message;
 }
 
-function validTelegram(value) {
-  return /^@?[A-Za-z0-9_]{5,32}$/.test(value.trim());
-}
-
 function openModal() {
   showError(document.getElementById('modal-error'), '');
   modal.showModal();
@@ -49,12 +45,6 @@ function registrationPayload(telegram) {
 }
 
 async function submitRegistration({input, error, button}) {
-  if (!validTelegram(input.value)) {
-    showError(error, 'Вкажи нікнейм Telegram у форматі @username.');
-    input.focus();
-    return;
-  }
-
   showError(error, '');
   const originalLabel = button.firstChild.textContent;
   button.disabled = true;
