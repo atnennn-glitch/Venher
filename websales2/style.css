@@ -55,6 +55,7 @@
 }
 .review-card a{display:block;border-radius:7px;cursor:zoom-in}
 .review-card a:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
+.bonus-section{background:var(--orange);padding-block:82px 92px}.bonus-topline{border-color:#18242f66;color:var(--ink);margin-bottom:32px}.bonus-intro{display:flex;justify-content:space-between;align-items:end;gap:60px;margin-bottom:40px}.bonus-intro h2{font-size:clamp(38px,4vw,62px);margin:0}.bonus-intro h2 em{color:#fff}.bonus-intro p{max-width:290px;margin:0 0 7px;color:#29323a;font-weight:700}.bonus-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.bonus-card{min-height:320px;background:#192630;color:#fff;padding:32px 36px;display:flex;flex-direction:column}.bonus-card-top{display:flex;justify-content:space-between;color:var(--orange);font-size:13px;font-weight:800;letter-spacing:.1em}.bonus-card-top span:last-child{font-size:27px;line-height:1}.bonus-card h3{font-size:clamp(24px,2.2vw,36px);line-height:1.18;margin:54px 0 16px;max-width:630px}.bonus-card p{color:#c8d0cf;font-size:17px;line-height:1.6;max-width:600px;margin:0}.bonus-tag{margin-top:auto;color:var(--orange);font-size:11px;font-weight:800;letter-spacing:.1em}
 /* Match the brand strip on offer-solo and keep the original mark alone. */
 .wordmark img{width:175px;height:74px;margin:-18px -5px -18px -8px}
 .footer-brand img{width:100px;height:43px;margin:-8px -4px -8px -5px}
@@ -97,5 +98,7 @@
 .floating-cta span{font-size:21px;font-weight:500;line-height:1}
 .floating-cta:focus-visible{outline:3px solid #a22d08;outline-offset:3px}
 @media(max-width:1000px){.prospects-intro{gap:30px}.prospect-card{grid-template-columns:40px minmax(0,1fr);padding:25px}.prospect-mark{display:none}}
+@media(max-width:1000px){.bonus-intro{gap:30px}.bonus-card{padding:27px 28px}.bonus-card h3{margin-top:42px}}
 @media(max-width:700px){.prospects-intro{display:block;margin-bottom:26px}.prospects-intro h2{font-size:clamp(30px,8vw,43px);margin-bottom:18px}.prospects-aside{flex-direction:row;align-items:center;justify-content:space-between;gap:18px}.prospects-dollar{order:2;font-size:clamp(52px,16vw,72px);flex:none}.prospects-intro p{font-size:14px;max-width:250px}.prospects-grid{grid-template-columns:1fr;gap:10px}.prospect-card{min-height:auto;grid-template-columns:42px minmax(0,1fr);padding:23px 18px}.prospect-card h3{font-size:17px;margin-bottom:10px}.prospect-card p{font-size:14px}.floating-cta{left:18px;right:18px;bottom:18px;min-width:0;min-height:58px;padding-inline:18px;box-shadow:0 8px 25px #1118}}
+@media(max-width:700px){.bonus-section{padding-block:68px 74px}.bonus-intro{display:block;margin-bottom:27px}.bonus-intro h2{font-size:clamp(31px,8vw,44px);margin-bottom:16px}.bonus-intro p{font-size:14px;max-width:250px}.bonus-grid{grid-template-columns:1fr;gap:10px}.bonus-card{min-height:270px;padding:23px 20px}.bonus-card h3{font-size:23px;margin:38px 0 13px}.bonus-card p{font-size:14px}.bonus-tag{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.floating-cta{transition:none}}
