@@ -1,11 +1,12 @@
-const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+document.documentElement.classList.add('js');
+const observer = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => entries.forEach((entry) => {
   if (entry.isIntersecting) {
     entry.target.classList.add('visible');
     observer.unobserve(entry.target);
   }
-}), { threshold: 0.12 });
+}), { threshold: 0.12 }) : null;
 
-document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+document.querySelectorAll('.reveal').forEach((el) => observer ? observer.observe(el) : el.classList.add('visible'));
 
 document.querySelectorAll('details').forEach((detail) => detail.addEventListener('toggle', () => {
   if (detail.open) document.querySelectorAll('details[open]').forEach((other) => {
@@ -24,6 +25,7 @@ document.querySelector('[data-case-next]')?.addEventListener('click', () => case
 const floating = document.querySelector('.floating');
 const problem = document.querySelector('#problem');
 const updateFloating = () => {
+  if (!problem) return;
   const showAfter = problem.offsetTop + Math.min(problem.offsetHeight * 0.45, 420);
   floating.classList.toggle('is-visible', window.scrollY > showAfter);
 };
@@ -65,14 +67,50 @@ modalPanel.addEventListener('keydown', (event) => {
   if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
 });
 
-document.querySelector('#signup-form').addEventListener('submit', (event) => {
+document.querySelector('#signup-form').addEventListener('submit', async (event) => {
   event.preventDefault();
   const form = event.currentTarget;
   if (!form.reportValidity()) return;
+
   const status = form.querySelector('.form-status');
-  status.textContent = 'Відкриваємо Telegram…';
-  if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
-  window.setTimeout(() => {
-    window.location.href = 'https://t.me/m/XaTMjRRKMDQ6';
-  }, 220);
+  const submitButton = form.querySelector('button[type="submit"]');
+  const initialButtonHtml = submitButton.innerHTML;
+  const formData = new FormData(form);
+  const payload = {
+    telegram: formData.get('telegram'),
+    phone: formData.get('phone'),
+    managers: formData.get('managers'),
+    pageUrl: window.location.href,
+    submittedAt: new Date().toISOString(),
+    website: formData.get('website')
+  };
+
+  status.textContent = '';
+  submitButton.disabled = true;
+  submitButton.textContent = 'Надсилаємо…';
+
+  try {
+    const response = await fetch('/api/telegram', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+    const result = await response.json().catch(() => null);
+
+    if (!response.ok || !result?.success) {
+      throw new Error(result?.error || 'Не вдалося надіслати заявку. Спробуйте ще раз.');
+    }
+
+    form.reset();
+    status.textContent = 'Дякуємо! Заявку успішно надіслано.';
+    submitButton.textContent = 'Заявку надіслано';
+    if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
+  } catch (error) {
+    status.textContent = error.message || 'Сталася помилка. Спробуйте ще раз.';
+    submitButton.disabled = false;
+    submitButton.innerHTML = initialButtonHtml;
+  }
 });
