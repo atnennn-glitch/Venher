@@ -4,8 +4,33 @@ const registerForm = document.getElementById('register-form');
 const floatingCta = document.getElementById('floating-cta');
 const prospects = document.getElementById('prospects');
 const registerSection = document.getElementById('register');
-const botUrl = 'https://telegram.me/Olga_Venher_bot?start=ZGw6MzQxMTYy';
+const botUrl = 'https://telegram.me/Olga_Venher_bot?start=ZGw6MzQ0NzQx';
 const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbzwJc3WujQnZAM9zXamnYjozZ5lHlhQaupKaO-nHe15yuuTktKUOCtb_t37iDKxi-Fb1A/exec';
+
+function setTomorrowDate() {
+  const monthNames = [
+    'січня', 'лютого', 'березня', 'квітня', 'травня', 'червня',
+    'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'
+  ];
+  const tomorrow = new Date();
+  tomorrow.setHours(12, 0, 0, 0);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const label = `${tomorrow.getDate()} ${monthNames[tomorrow.getMonth()]}`;
+  document.querySelectorAll('[data-tomorrow-date]').forEach(element => {
+    element.textContent = label;
+  });
+}
+
+setTomorrowDate();
+
+function populateTrackingFields() {
+  const params = new URLSearchParams(window.location.search);
+  document.querySelectorAll('[data-tracking-param]').forEach(field => {
+    field.value = params.get(field.name) || '';
+  });
+}
+
+populateTrackingFields();
 
 function showError(element, message) {
   element.textContent = message;
@@ -33,15 +58,16 @@ function updateFloatingCta() {
   floatingCta.tabIndex = isVisible ? 0 : -1;
 }
 
-function registrationPayload(email) {
-  const params = new URLSearchParams(window.location.search);
+function registrationPayload(email, form) {
+  const tracking = {};
+  form.querySelectorAll('[data-tracking-param]').forEach(field => {
+    tracking[field.name] = field.value;
+  });
   return {
     email: email.trim(),
     telegram: email.trim(),
     page: window.location.href,
-    utm_source: params.get('utm_source') || '',
-    utm_campaign: params.get('utm_campaign') || '',
-    utm_content: params.get('utm_content') || ''
+    ...tracking
   };
 }
 
@@ -64,7 +90,7 @@ function submitRegistration({input, error, button}) {
   showError(error, '');
   button.disabled = true;
   button.firstChild.textContent = 'Переходимо в Telegram ';
-  sendRegistration(registrationPayload(input.value));
+  sendRegistration(registrationPayload(input.value, input.form));
   if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
   setTimeout(() => window.location.assign(botUrl), 100);
 }
