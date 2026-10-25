@@ -102,3 +102,27 @@
 @media(max-width:700px){.prospects-intro{display:block;margin-bottom:26px}.prospects-intro h2{font-size:clamp(30px,8vw,43px);margin-bottom:18px}.prospects-aside{flex-direction:row;align-items:center;justify-content:space-between;gap:18px}.prospects-dollar{order:2;font-size:clamp(52px,16vw,72px);flex:none}.prospects-intro p{font-size:14px;max-width:250px}.prospects-grid{grid-template-columns:1fr;gap:10px}.prospect-card{min-height:auto;grid-template-columns:42px minmax(0,1fr);padding:23px 18px}.prospect-card h3{font-size:17px;margin-bottom:10px}.prospect-card p{font-size:14px}.floating-cta{left:18px;right:18px;bottom:18px;min-width:0;min-height:58px;padding-inline:18px;box-shadow:0 8px 25px #1118}}
 @media(max-width:700px){.bonus-section{padding-block:68px 74px}.bonus-intro{display:block;margin-bottom:27px}.bonus-intro h2{font-size:clamp(31px,8vw,44px);margin-bottom:16px}.bonus-intro p{font-size:14px;max-width:250px}.bonus-grid{grid-template-columns:1fr;gap:10px}.bonus-card{min-height:270px;padding:23px 20px}.bonus-card h3{font-size:23px;margin:38px 0 13px}.bonus-card p{font-size:14px}.bonus-tag{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.floating-cta{transition:none}}
+
+/* Conversion accents and speaker credibility badge */
+.button-primary{background:#20bd63;color:#fff}.button-primary:hover{background:#11964a}
+.floating-cta{background:#20bd63;color:#fff;border-radius:999px}.floating-cta:hover{background:#11964a}
+.diia-badge{position:absolute;right:-8px;top:28px;z-index:2;display:flex;align-items:center;gap:12px;background:#fff;color:#111;padding:11px 16px 11px 11px;border:1px solid var(--line);box-shadow:0 14px 36px #15263226}
+.diia-mark{width:42px;height:42px;border-radius:12px;background:#111;color:#fff;display:grid;place-items:center;font-size:18px;font-weight:800}
+.diia-badge small,.diia-badge strong{display:block}.diia-badge small{font-size:8px;line-height:1.2;letter-spacing:.12em;font-weight:800;margin-bottom:3px}.diia-badge strong{font-family:Unbounded,sans-serif;font-size:14px;line-height:1.1;letter-spacing:-.04em}
+@media(max-width:700px){.diia-badge{right:-3px;top:14px;padding:8px 11px 8px 8px;gap:8px}.diia-mark{width:34px;height:34px;border-radius:10px;font-size:15px}.diia-badge small{font-size:7px}.diia-badge strong{font-size:11px}}
+
+/* Unified speaker card */
+.photo-caption{left:-18px;bottom:22px;min-width:270px;padding:15px 18px}.photo-caption>strong{display:block;margin-bottom:12px}.photo-credential{display:flex;align-items:center;gap:9px;padding-top:11px;border-top:1px solid var(--line)}.photo-credential .diia-mark{width:34px;height:34px;border-radius:10px;font-size:15px;flex:none;color:#fff}.photo-credential small,.photo-credential b{display:block}.photo-credential small{font-size:7px;line-height:1.2;letter-spacing:.12em;font-weight:800;margin-bottom:2px;color:#111}.photo-credential b{font:800 12px/1.1 Unbounded,sans-serif;letter-spacing:-.04em;color:#111}
+@media(max-width:700px){.photo-caption{left:-2px;bottom:13px;min-width:222px;padding:12px 14px}.photo-caption>strong{margin-bottom:9px}.photo-credential{padding-top:9px}.photo-credential .diia-mark{width:30px;height:30px;font-size:13px}.photo-credential b{font-size:10px}}
+
+/* Keep the unified card aligned inside the portrait */
+.photo-caption{left:18px;right:auto;width:285px;min-width:0;max-width:calc(100% - 36px)}
+@media(max-width:700px){.photo-caption{left:12px;right:12px;bottom:12px;width:auto;max-width:280px;min-width:0;padding:11px 12px}.photo-caption>strong{font-size:12px;line-height:1.2;margin-bottom:8px}.photo-credential{gap:8px;padding-top:8px}.photo-credential small{font-size:6px}.photo-credential b{font-size:9px}}
+
+/* Compact card proportions */
+.photo-caption{left:14px;bottom:14px;width:218px;max-width:calc(100% - 28px);padding:11px 12px}.photo-caption>strong{font-size:12px;line-height:1.2;margin-bottom:8px}.photo-credential{gap:7px;padding-top:8px}.photo-credential .diia-mark{width:30px;height:30px;border-radius:9px;font-size:13px}.photo-credential small{font-size:6px}.photo-credential b{font-size:9px}
+@media(max-width:700px){.photo-caption{left:10px;right:auto;bottom:10px;width:205px;max-width:calc(100% - 20px);padding:10px 11px}}
+
+/* Final badge alignment and readable scale */
+.photo-caption{width:250px;padding:13px 14px}.photo-caption>strong{font-size:15px;line-height:1.2;margin-bottom:10px}.photo-credential{gap:10px;padding-top:10px}.photo-credential .diia-mark{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:18px;line-height:1;color:#fff;padding:0}.photo-credential small{font-size:7px;line-height:1.15}.photo-credential b{font-size:11px;line-height:1.15}
+@media(max-width:700px){.photo-caption{width:230px;padding:11px 12px}.photo-caption>strong{font-size:14px}.photo-credential .diia-mark{width:36px;height:36px;font-size:16px}.photo-credential b{font-size:10px}}
