@@ -148,6 +148,13 @@
       .price { color: var(--orange); font-size: 58px; line-height: 1; font-weight: 950; }
       .price-row .old-price { font-size: 28px; font-weight: 850; }
 
+      .gift-section { background: white; }
+      .gift-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+      .gift-card { min-height: 300px; padding: 30px; border: 1px solid var(--orange); border-radius: 22px; background: var(--orange-pale); }
+      .gift-number { display: inline-flex; padding: 8px 12px; border-radius: 999px; background: var(--orange); color: white; font-size: 13px; font-weight: 950; text-transform: uppercase; letter-spacing: .04em; }
+      .gift-card h3 { margin-top: 26px; font-size: clamp(29px,3vw,42px); line-height: 1.02; letter-spacing: -.025em; }
+      .gift-card p { margin-top: 17px; color: var(--muted); font-size: 17px; }
+
       .bonus-wrap { display: grid; grid-template-columns: minmax(0,1fr) 370px; gap: 18px; }
       .bonus { padding: 35px; border: 1px solid var(--orange); border-radius: 20px; background: linear-gradient(135deg, var(--orange-soft), white 62%); }
       .bonus p { margin-top: 16px; color: var(--muted); font-size: 18px; }
@@ -177,7 +184,9 @@
       .marquee-row { display: flex; width: max-content; gap: 14px; animation: brand-scroll 34s linear infinite; }
       .marquee-row.reverse { animation-direction: reverse; animation-duration: 40s; transform: translateX(-25%); }
       .brand-card { width: 250px; height: 128px; flex: 0 0 auto; display: grid; place-items: center; overflow: hidden; border: 1px solid rgba(255,255,255,.2); border-radius: 22px; background: white; }
-      .brand-card img { width: 100%; height: 100%; object-fit: cover; }
+      .brand-card img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+      .brand-card img[src*="deeply"] { object-fit: contain; transform: translateY(-16%) scale(1.4); }
+      .brand-card img[src*="zeo-alliance"] { transform: scale(3); }
       @keyframes brand-scroll { to { transform: translateX(calc(-50% - 7px)); } }
 
       .faq { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
@@ -217,7 +226,7 @@
 
       @media (max-width: 980px) {
         .navlinks { display: none; }
-        .hero-grid, .section-head, .buy-grid, .bonus-wrap, .speaker-grid, .footer .shell { grid-template-columns: 1fr; }
+        .hero-grid, .section-head, .buy-grid, .gift-grid, .bonus-wrap, .speaker-grid, .footer .shell { grid-template-columns: 1fr; }
         .hero { padding-top: 52px; }
         .hero-visual { min-height: 610px; }
         .case-grid, .faq { grid-template-columns: 1fr; }
@@ -248,6 +257,7 @@
         .modal-card h2 { font-size: 42px; }
         .modal-intro p { font-size: 17px; }
         .brand-card { width: 190px; height: 102px; border-radius: 17px; }
+        .gift-card { min-height: auto; padding: 24px; }
       }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
@@ -380,6 +390,25 @@
           </div>
         </section>
 
+        <section class="gift-section" aria-label="Бонуси за реєстрацію">
+          <div class="shell">
+            <div class="section-head"><h2>2 бонуси за реєстрацію</h2><p class="section-copy">Корисні матеріали, які допоможуть упевненіше зробити перші кроки в професії.</p></div>
+            <div class="gift-grid">
+              <article class="gift-card">
+                <div class="gift-number">Бонус 1</div>
+                <h3>«Словник продажника»</h3>
+                <p>30 головних термінів простими словами: лід, CRM, конверсія, допродаж та інші.</p>
+                <p>Щоб ти краще розумів вакансії, впевненіше почувався на співбесіді та не губився на першій роботі.</p>
+              </article>
+              <article class="gift-card">
+                <div class="gift-number">Бонус 2</div>
+                <h3>«Чекліст перевірки вакансії»</h3>
+                <p>Допоможе зрозуміти, як відрізнити нормальну вакансію від шахраїв, мережевого маркетингу та сумнівних пропозицій.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
         <section id="bonus">
           <div class="shell bonus-wrap">
             <div class="bonus">
@@ -471,6 +500,7 @@
 
     <script>
       const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbzwJc3WujQnZAM9zXamnYjozZ5lHlhQaupKaO-nHe15yuuTktKUOCtb_t37iDKxi-Fb1A/exec';
+      const telegramRedirectUrl = 'https://telegram.me/Olga_Venher_bot?start=ZGw6MzQ3MTIz';
       const trackingParams = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','campaign_id','adset_id','ad_id','fbclid','placement'];
       const trackingStorageKey = 'newmanager_tracking';
       const modal = document.getElementById('lead-modal');
@@ -554,6 +584,7 @@
         sendRegistration({email:emailInput.value.trim(), telegram:emailInput.value.trim(), access_confirmed:'yes', page:location.href, product:'newmanager', ...tracking});
         modalCard.classList.add('is-success');
         leadForm.reset();
+        setTimeout(() => { window.location.href = telegramRedirectUrl; }, 450);
         setTimeout(() => { submitButton.disabled = false; submitButton.textContent = 'Залишити заявку та перейти в Telegram ↗'; }, 1200);
       });
 
