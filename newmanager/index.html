@@ -15,10 +15,10 @@
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1280398327139709');
+      fbq('init', '1154584716911297');
       fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1280398327139709&ev=PageView&noscript=1" alt="" /></noscript>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1154584716911297&ev=PageView&noscript=1" alt="" /></noscript>
     <!-- End Meta Pixel Code -->
     <style>
       :root {
@@ -582,6 +582,7 @@
         submitButton.textContent = 'Надсилаємо…';
         const tracking = collectTracking();
         sendRegistration({email:emailInput.value.trim(), telegram:emailInput.value.trim(), access_confirmed:'yes', page:location.href, product:'newmanager', ...tracking});
+        if (typeof fbq === 'function') fbq('track', 'Lead');
         modalCard.classList.add('is-success');
         leadForm.reset();
         setTimeout(() => { window.location.href = telegramRedirectUrl; }, 450);
