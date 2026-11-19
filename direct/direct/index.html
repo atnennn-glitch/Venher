@@ -1,6 +1,17 @@
 <!doctype html><html lang="en" class="site-root site-root--published fonts-stage-1">
 <head>
-  <base href="https://venher-edu.com.ua/">
+  <style id="anti-fouc">
+    html { background: #080808; }
+    body { opacity: 0; }
+    html.site-ready body { opacity: 1; transition: opacity .12s ease-out; }
+  </style>
+  <script>
+    (function () {
+      var reveal = function () { document.documentElement.classList.add('site-ready'); };
+      document.addEventListener('DOMContentLoaded', reveal, { once: true });
+      window.setTimeout(reveal, 1800);
+    }());
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta property="og:type" content="website" />
@@ -6468,7 +6479,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   
 <!--CONTENT_PLACEHOLDER-->  
   
-<script src="/common/core.min.js"></script>
+<script src="https://venher-edu.com.ua/common/core.min.js"></script>
 <script>
 window.webpackPublicPath = "/site/6a55e7ba487c9fd9ab373595/components/"
 window.WEBLIUM_DOMAIN = 'weblium.com'
@@ -6554,7 +6565,7 @@ window.swPromise.then(function() {
     </a>
   </div>
     <script>window.API_URL = "https://api.weblium.com"</script>
-    <script defer src="/editor/static/site-stat.js"></script>
+    <script defer src="https://venher-edu.com.ua/editor/static/site-stat.js"></script>
     <script>window.__LANG__ = "en"</script>
     <style id="requested-edits">
       #blockId-68c1c04589a874e772209a2a,
@@ -6669,10 +6680,56 @@ window.swPromise.then(function() {
         .course-program__card { min-height: 0; }
         .course-program__card h3 { min-height: 0; }
       }
+      .floating-access-button {
+        position: fixed;
+        z-index: 9999;
+        right: 28px;
+        bottom: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 250px;
+        min-height: 62px;
+        padding: 16px 30px;
+        border: 1px solid rgba(255, 255, 255, .24);
+        border-radius: 999px;
+        background: linear-gradient(135deg, #6bb953, #4c923d);
+        box-shadow: 0 16px 42px rgba(54, 130, 47, .42);
+        color: #fff !important;
+        font-size: 18px;
+        font-weight: 800;
+        line-height: 1;
+        text-align: center;
+        text-decoration: none !important;
+        text-transform: uppercase;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: opacity .25s ease, transform .25s ease, visibility .25s ease, box-shadow .2s ease;
+      }
+      .floating-access-button.is-visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .floating-access-button:hover {
+        box-shadow: 0 18px 48px rgba(54, 130, 47, .58);
+        transform: translateY(-2px);
+      }
+      @media (max-width: 640px) {
+        .floating-access-button {
+          right: 16px;
+          bottom: 16px;
+          left: 16px;
+          min-width: 0;
+          min-height: 58px;
+          font-size: 16px;
+        }
+      }
     </style>
     <script>
       (function () {
-        var paymentUrl = "https://secure.wayforpay.com/page?vkh=6afee3cf-f724-4bb4-ad3b-186822d1dba8";
+        var paymentUrl = "https://secure.wayforpay.com/payment/sc7ff262e2dfc";
 
         document.addEventListener("click", function (event) {
           var trigger = event.target.closest(".popup-trigger, [data-popup-anchor]");
@@ -6735,15 +6792,41 @@ window.swPromise.then(function() {
           );
         }
 
+        function ensureFloatingButton() {
+          var button = document.querySelector(".floating-access-button");
+          if (!button) {
+            button = document.createElement("a");
+            button.className = "floating-access-button";
+            button.href = paymentUrl;
+            button.textContent = "Отримати доступ";
+            button.setAttribute("aria-label", "Отримати доступ до курсу");
+            document.body.appendChild(button);
+          }
+
+          var blocks = Array.prototype.filter.call(
+            document.querySelectorAll("#page-home .w-block-wrapper"),
+            function (block) { return getComputedStyle(block).display !== "none"; }
+          );
+          var secondBlock = blocks[1];
+          var threshold = secondBlock
+            ? secondBlock.getBoundingClientRect().bottom + window.scrollY - window.innerHeight * .35
+            : window.innerHeight;
+          button.classList.toggle("is-visible", window.scrollY >= threshold);
+        }
+
         removeApplicationForms();
         updateExperienceText();
         updateLegalLinks();
         ensureCourseProgram();
+        ensureFloatingButton();
+        window.addEventListener("scroll", ensureFloatingButton, { passive: true });
+        window.addEventListener("resize", ensureFloatingButton);
         new MutationObserver(function () {
           removeApplicationForms();
           updateExperienceText();
           updateLegalLinks();
           ensureCourseProgram();
+          ensureFloatingButton();
         }).observe(document.documentElement, {
           childList: true,
           subtree: true
