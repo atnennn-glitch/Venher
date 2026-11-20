@@ -4,7 +4,7 @@ const registerForm = document.getElementById('register-form');
 const floatingCta = document.getElementById('floating-cta');
 const prospects = document.getElementById('prospects');
 const registerSection = document.getElementById('register');
-const botUrl = 'https://telegram.me/max_formula_bot?start=ZGw6MzQ4MTc5';
+const botUrl = 'https://telegram.me/Olga_Venher_bot?start=ZGw6MzQ4NDMx';
 const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbzwJc3WujQnZAM9zXamnYjozZ5lHlhQaupKaO-nHe15yuuTktKUOCtb_t37iDKxi-Fb1A/exec';
 const trackingParams = [
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
